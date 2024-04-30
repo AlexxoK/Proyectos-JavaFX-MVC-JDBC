@@ -12,12 +12,14 @@ import org.diegomonterroso.system.Main;
 public class MenuPrincipalController implements Initializable {
     private Main stage;
     @FXML
-    MenuItem btnClientes;
+    MenuItem btnClientes, btnTicketSoporte;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnClientes){
             stage.menuClienteView();
+        }else if(event.getSource() == btnTicketSoporte){
+            stage.menuTicketSoporteView();
         }
     }
     

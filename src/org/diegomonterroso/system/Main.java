@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import org.diegomonterroso.controller.FormClienteController;
 import org.diegomonterroso.controller.MenuClienteController;
 import org.diegomonterroso.controller.MenuPrincipalController;
+import org.diegomonterroso.controller.MenuTicketSoporteController;
 
 public class Main extends Application {
     private final String URLVIEW = "/org/diegomonterroso/view/";
@@ -65,6 +66,15 @@ public class Main extends Application {
             FormClienteController formClienteView = (FormClienteController)switchScene("FormClienteView.fxml", 500, 750);
             formClienteView.setOp(op);
             formClienteView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuTicketSoporteView(){
+        try{
+            MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml", 1200, 750);
+            menuTicketSoporteView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
