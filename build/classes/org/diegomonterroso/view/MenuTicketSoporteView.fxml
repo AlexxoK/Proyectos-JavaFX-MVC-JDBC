@@ -20,15 +20,19 @@
       <TextField fx:id="tfTicketId" editable="false" layoutX="60.0" layoutY="280.0" prefHeight="25.0" prefWidth="186.0" />
       <TextArea fx:id="taDescripcion" layoutX="60.0" layoutY="398.0" prefHeight="118.0" prefWidth="288.0" wrapText="true" />
       <ComboBox fx:id="cmbEstatus" layoutX="60.0" layoutY="567.0" prefHeight="26.0" prefWidth="186.0" />
-      <TableView fx:id="tblTickets" layoutX="386.0" layoutY="343.0" prefHeight="348.0" prefWidth="682.0">
-        <columns>
-          <TableColumn fx:id="colTicketId" prefWidth="75.0" text="Ticket Id" />
-          <TableColumn fx:id="colDescripcion" prefWidth="209.5999755859375" text="Descripcion" />
-            <TableColumn fx:id="colEstatus" prefWidth="102.4000244140625" text="Estatus" />
-            <TableColumn fx:id="colCliente" prefWidth="209.5999755859375" text="Cliente" />
-            <TableColumn fx:id="colFacturaId" prefWidth="83.99997558593748" text="Factura Id" />
-        </columns>
-      </TableView>
+      <AnchorPane layoutX="386.0" layoutY="343.0">
+         <children>
+            <TableView fx:id="tblTickets" onMouseClicked="#cargarForm" prefHeight="348.0" prefWidth="682.0">
+              <columns>
+                <TableColumn fx:id="colTicketId" prefWidth="75.0" text="Ticket Id" />
+                <TableColumn fx:id="colDescripcion" prefWidth="209.5999755859375" text="Descripcion" />
+                  <TableColumn fx:id="colEstatus" prefWidth="102.4000244140625" text="Estatus" />
+                  <TableColumn fx:id="colCliente" prefWidth="209.5999755859375" text="Cliente" />
+                  <TableColumn fx:id="colFacturaId" prefWidth="83.99997558593748" text="Factura Id" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
       <AnchorPane layoutX="60.0" layoutY="612.0">
          <children>
             <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />

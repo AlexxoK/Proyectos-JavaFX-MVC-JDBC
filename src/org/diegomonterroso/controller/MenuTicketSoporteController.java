@@ -77,11 +77,11 @@ public class MenuTicketSoporteController implements Initializable {
     
     public void cargarDatos(){
         tblTickets.setItems(listarTickets());
-        colTicketId.setCellFactory(new PropertyValueFactory<TicketSoporte, Integer>("ticketSoporteId"));
-        colDescripcion.setCellFactory(new PropertyValueFactory<TicketSoporte, String>("descripcion"));
-        colEstatus.setCellFactory(new PropertyValueFactory<TicketSoporte, String>("estatus"));
-        colCliente.setCellFactory(new PropertyValueFactory<TicketSoporte, String>("cliente"));
-        colFacturaId.setCellFactory(new PropertyValueFactory<TicketSoporte, Integer>("facturaId"));
+        colTicketId.setCellValueFactory(new PropertyValueFactory<TicketSoporte, Integer>("ticketSoporteId"));
+        colDescripcion.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("descripcion"));
+        colEstatus.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("estatus"));
+        colCliente.setCellValueFactory(new PropertyValueFactory<TicketSoporte, String>("cliente"));
+        colFacturaId.setCellValueFactory(new PropertyValueFactory<TicketSoporte, Integer>("facturaId"));
     }
     
     public void cargarCmbEstatus(){
@@ -115,7 +115,7 @@ public class MenuTicketSoporteController implements Initializable {
     
     public int obtenerIndexCliente(){
         int index = 0;
-        String clienteTbl = ((TicketSoporte)tblTickets.getSelectionModel().getSelectedItem()).getCliente(); 
+        String clienteTbl = ((TicketSoporte)tblTickets.getSelectionModel().getSelectedItem()).getCliente();
         for(int i = 0 ; i <= cmbCliente.getItems().size() ; i++){
             String clienteCmb = cmbCliente.getItems().get(i).toString();
             
