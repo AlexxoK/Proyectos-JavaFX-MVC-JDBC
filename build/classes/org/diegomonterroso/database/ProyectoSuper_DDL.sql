@@ -1,4 +1,4 @@
--- drop database if exists superDB;
+drop database if exists superDB;
 
 create database if not exists superDB;
 
@@ -47,14 +47,47 @@ create table CategoriaProductos(
     Primary key PK_categoriaProductosId (categoriaProductosId)
 );
 
+create table Empleados(
+	empleadoId int not null auto_increment,
+    nombreEmpleado varchar(30) not null,
+    apellidoEmpleado varchar(30) not null,
+    sueldo decimal(10,2) not null,
+    horaEntrada time not null,
+    horaSalida time not null,
+    cargoId int not null,
+    encargadoId int,
+    primary key PK_empleadoId (empleadoId),
+    constraint FK_encargadoId foreign key Empleados (encargadoId)
+		references Empleados (empleadoId),
+	constraint FK_Empleados_Cargos foreign key Cargos (cargoId)
+		references Cargos (cargoId)
+);
+
+create table Facturas(
+	facturaId int not null auto_increment,
+    fecha date not null,
+    hora time not null,
+    clienteId int not null,
+    empleadoId int not null,
+    total decimal,
+    primary key PK_facturaId (facturaId),
+    constraint FK_Facturas_Clientes foreign key Clientes (clienteId)
+	references Clientes (clienteId),
+    constraint FK_Facturas_Empleados foreign key Empleados (empleadoId)
+		references Empleados (empleadoId)
+);
+
 create table TicketSoporte(
 	ticketSoporteId int not null auto_increment,
     descripcionTicket varchar (250),
     estatus varchar (30),
     clienteId int not null,
+    facturaId int not null,
 	primary key PK_ticketSoporteId (ticketSoporteId),
     constraint FK_TicketSoporte_Clientes foreign key TicketSoporte (clienteId)
-		references Clientes (clienteId)
+		references Clientes (clienteId),
+	constraint FK_TicketSoporte_Facturas foreign key TicketSoporte (facturaId)
+		references Facturas (facturaId)
 );
 
 create table Productos(
@@ -87,36 +120,6 @@ create table Promociones(
 		references Productos (productoId)
 );
 
-create table Empleados(
-	empleadoId int not null auto_increment,
-    nombreEmpleado varchar(30) not null,
-    apellidoEmpleado varchar(30) not null,
-    sueldo decimal(10,2) not null,
-    horaEntrada time not null,
-    horaSalida time not null,
-    cargoId int not null,
-    encargadoId int,
-    primary key PK_empleadoId (empleadoId),
-    constraint FK_encargadoId foreign key Emplados (encargadoId)
-		references Empleados (empleadoId),
-	constraint FK_Empleados_Cargos foreign key Cargos (cargoId)
-		references Cargos (cargoId)
-);
-
-create table Facturas(
-	facturaId int not null auto_increment,
-    fecha date not null,
-    hora time not null,
-    clienteId int not null,
-    empleadoId int not null,
-    total decimal,
-    primary key PK_facturaId (facturaId),
-    constraint FK_Facturas_Clientes foreign key Clientes (clienteId)
-	references Clientes (clienteId),
-    constraint FK_Facturas_Empleados foreign key Empleados (empleadoId)
-		references Empleados (empleadoId)
-);
-
 create table DetalleFactura(
 	detalleFacturaId int not null auto_increment,
     facturaId int not null,
@@ -144,3 +147,14 @@ insert into Clientes(nombre, apellido, telefono, nit, direccion) values
 	('Luis', 'Cuxun', '1234-1234', '17302703-0', 'Ciudad'),
     ('Alejandro', 'Carrillo', '4234-4234', '36987412-0', 'Ciudad'),
     ('Jesus', 'Sis', '1231-1231', '23548691-0', 'Ciudad');
+ 
+insert into Cargos(nombreCargo, descripcionCargo) values
+    ('Gerente de Billar', 'Se encarga de mantener todo en orden.');
+
+insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId) values
+    ('Carlos', 'Orozco', '200.00', '15:00:00', '23:00:00', 1, 1);
+    
+insert into Facturas(fecha, hora, clienteId, empleadoId, total) values
+    ('2024-03-23', '20:00:00', 1, 1, '17.00');
+    
+Select * from TicketSoporte;

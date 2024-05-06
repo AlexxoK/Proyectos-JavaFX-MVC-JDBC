@@ -279,24 +279,25 @@ End$$
 Delimiter ;
 
 delimiter $$ 
-create procedure sp_agregarTicketSoporte(In des varchar(250), In est varchar(30), In cliId int)
+create procedure sp_agregarTicketSoporte(In des varchar(250), In cliId int, In facId int)
 begin 
-    insert into TicketSoporte(descripcionTicket, estatus, clienteId) values
-		(des, est, cliId); 
+    insert into TicketSoporte(descripcionTicket, estatus, clienteId, facturaId) values
+		(des, 'Recien creado', cliId, facId); 
 end $$ 
 delimiter ;
+
+call sp_agregarTicketSoporte('Error en el total.', 1, 1);
  
 delimiter $$ 
 create procedure sp_listarTicketSoporte() 
 begin 
-    select
-		TicketSoporte.ticketSoporteId,
-		TicketSoporte.descripcionTicket, 
-		TicketSoporte.estatus, 
-		TicketSoporte.clienteId 
-			from TicketSoporte; 
+    select TS.ticketSoporteId, TS.descripcionTicket, TS.estatus,
+    concat("Id: ", C.clienteId, " | ", C.nombre, " ", C.apellido, " ") As cliente, TS.facturaId from TicketSoporte TS
+    Join Clientes C on TS.clienteId = C.clienteId;
 end $$ 
 delimiter ;
+
+call sp_listarTicketSoporte();
  
 delimiter $$ 
 create procedure sp_eliminarTicketSoporte(In ticId int) 
