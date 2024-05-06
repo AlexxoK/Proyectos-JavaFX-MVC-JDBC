@@ -48,15 +48,22 @@ public class MenuTicketSoporteController implements Initializable {
     TableColumn colTicketId, colDescripcion, colEstatus, colCliente, colFacturaId;
     
     @FXML
-    Button btnRegresar, btnGuardar, btnVaciar;
+    Button btnGuardar, btnVaciar, btnRegresar;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
         }else if(event.getSource() == btnGuardar){
-            agregarTicket();
-            cargarDatos();
+            if(tfTicketId.getText().equals("")){
+                agregarTicket();
+                cargarDatos();
+            }else{
+                editarTicket();
+                cargarDatos();
+            }
+        }else if(event.getSource() == btnVaciar){
+            vaciarForm();
         }
     }
     
@@ -84,6 +91,41 @@ public class MenuTicketSoporteController implements Initializable {
     
     public void cargarCmbFactura(){
         cmbFactura.getItems().add("1");
+    }
+    
+    public void vaciarForm(){
+        tfTicketId.clear();
+        taDescripcion.clear();
+        cmbEstatus.getSelectionModel().clearSelection();
+        cmbCliente.getSelectionModel().clearSelection();
+        cmbFactura.getSelectionModel().clearSelection();
+    }
+    
+    @FXML
+    public void cargarForm(){
+        TicketSoporte ts = (TicketSoporte)tblTickets.getSelectionModel().getSelectedItem();
+        if(ts != null){
+            tfTicketId.setText(Integer.toString(ts.getTicketSoporteId()));
+            taDescripcion.setText(ts.getDescripcion());
+            cmbEstatus.getSelectionModel().select(0);
+            cmbCliente.getSelectionModel().select(obtenerIndexCliente());
+            cmbFactura.getSelectionModel().select(0);
+        }
+    }
+    
+    public int obtenerIndexCliente(){
+        int index = 0;
+        String clienteTbl = ((TicketSoporte)tblTickets.getSelectionModel().getSelectedItem()).getCliente(); 
+        for(int i = 0 ; i <= cmbCliente.getItems().size() ; i++){
+            String clienteCmb = cmbCliente.getItems().get(i).toString();
+            
+            if(clienteTbl.equals(clienteCmb)){
+                index = i;
+                break;
+            }
+        }
+        
+        return index;
     }
     
     public ObservableList<TicketSoporte> listarTickets(){
@@ -178,6 +220,33 @@ public class MenuTicketSoporteController implements Initializable {
         }finally{
             try{
                 if(statement!= null){
+                    statement.close();
+                }
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public void editarTicket(){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_editarTicketSoporte(?, ?, ?, ?, ?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(tfTicketId.getText()));
+            statement.setString(2, taDescripcion.getText());
+            statement.setString(3, (cmbEstatus.getSelectionModel().getSelectedItem().toString()));
+            statement.setInt(4, ((Cliente)cmbCliente.getSelectionModel().getSelectedItem()).getClienteId());
+            statement.setInt(5, Integer.parseInt(cmbFactura.getSelectionModel().getSelectedItem().toString()));
+            statement.execute();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(statement != null){
                     statement.close();
                 }
                 if(conexion != null){

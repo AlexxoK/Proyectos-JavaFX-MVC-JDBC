@@ -4,7 +4,7 @@ create database if not exists superDB;
 
 use superDB;
 
- set global time_zone = '-6:00';
+set global time_zone = '-6:00';
 
 create table Clientes(
 	clienteId int not null auto_increment,
