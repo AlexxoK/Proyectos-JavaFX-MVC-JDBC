@@ -29,7 +29,7 @@ create table Compras(
     totalCompra decimal(10, 2),
     primary key PK_compraId (compraId)
 );
-
+-- COMPRAS PENDIENTE EN NETBEANS
 create table Distribuidores(
 	distribuidorId int not null auto_increment,
     nombreDistribuidor varchar(30) not null,
@@ -150,6 +150,9 @@ insert into Clientes(nombre, apellido, telefono, nit, direccion) values
  
 insert into Cargos(nombreCargo, descripcionCargo) values
     ('Gerente de Billar', 'Se encarga de mantener todo en orden.');
+    
+insert into Compras(fechaCompra, totalCompra) values
+    ('2024-03-23', '100.00');
 
 insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId) values
     ('Carlos', 'Orozco', '200.00', '15:00:00', '23:00:00', 1, 1);

@@ -10,8 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.diegomonterroso.controller.FormCargoController;
 import org.diegomonterroso.controller.FormClienteController;
+import org.diegomonterroso.controller.FormCompraController;
 import org.diegomonterroso.controller.MenuCargoController;
 import org.diegomonterroso.controller.MenuClienteController;
+import org.diegomonterroso.controller.MenuCompraController;
+import org.diegomonterroso.controller.MenuDistribuidorController;
 import org.diegomonterroso.controller.MenuPrincipalController;
 import org.diegomonterroso.controller.MenuTicketSoporteController;
 
@@ -101,6 +104,44 @@ public class Main extends Application {
         }
     }
 
+    public void menuCompraView(){
+        try{
+            MenuCompraController menuCompraView = (MenuCompraController)switchScene("MenuCompraView.fxml", 1200, 750);
+            menuCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formCompraView(int op){
+        try{
+            FormCompraController formCompraView = (FormCompraController)switchScene("FormCompraView.fxml", 500, 750);
+            formCompraView.setOp(op);
+            formCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuDistribuidorView(){
+        try{
+            MenuDistribuidorController menuDistribuidorView = (MenuDistribuidorController)switchScene("MenuDistribuidorView.fxml", 1200, 750);
+            menuDistribuidorView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formDistribuidorView(int op){
+        try{
+            FormCompraController formCompraView = (FormCompraController)switchScene("FormCompraView.fxml", 500, 750);
+            formCompraView.setOp(op);
+            formCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public static void main(String[] args) {
         launch(args);
     }

@@ -72,7 +72,7 @@ Call sp_EditarCliente(3, 'Josue', 'Boror', '56871245', '13548217-0', 'Ciudad');
 Delimiter $$
 create procedure sp_agregarCargo(In nom varchar(30), In des varchar(100))
 Begin
-	insert into Cargos(nombreCargo, descripcion) values
+	insert into Cargos(nombreCargo, descripcionCargo) values
 		(nom, des);
 End $$
 Delimiter ;
@@ -83,7 +83,7 @@ Begin
 	Select
 		Cargos.cargoId,
 		Cargos.nombreCargo,
-		Cargos.descripcion
+		Cargos.descripcionCargo
 			From Cargos;
 End$$
 Delimiter ;
@@ -102,7 +102,7 @@ Begin
 	Select
 		Cargos.cargoId,
 		Cargos.nombreCargo,
-		Cargos.descripcion
+		Cargos.descripcionCargo
 			From Cargos
 				Where cargoId = carId;
 End$$
@@ -114,7 +114,7 @@ Begin
 	Update Cargos
 		Set
 			nombreCargo = nom,
-			descripcion = des
+			descripcionCargo = des
 				Where cargoId = carId;
 End$$
 Delimiter ;
@@ -285,8 +285,6 @@ begin
 		(des, 'Recien creado', cliId, facId); 
 end $$ 
 delimiter ;
-
-call sp_agregarTicketSoporte('Error en el total.', 1, 1);
  
 delimiter $$ 
 create procedure sp_listarTicketSoporte() 
@@ -314,20 +312,22 @@ begin
 		TicketSoporte.ticketSoporteId, 
         TicketSoporte.descripcionTicket, 
         TicketSoporte.estatus, 
-        TicketSoporte.clienteId 
+        TicketSoporte.clienteId, 
+        TicketSoporte.facturaId
 			from TicketSoporte 
 				where ticketSoporteId = ticId; 
 end $$ 
 delimiter ;
  
 delimiter $$ 
-create procedure sp_editarTicketSoporte(In ticId int, In des varchar(250), In est varchar(30), In cliId int) 
+create procedure sp_editarTicketSoporte(In ticId int, In des varchar(250), In est varchar(30), In cliId int, In facId int) 
 begin 
     update TicketSoporte 
 		set 
 			descripcionTicket = des, 
 			estatus = est, 
-			clienteId = cliId 
+			clienteId = cliId,
+            facturaId = facId
 				where ticketSoporteId = ticId; 
 end $$ 
 delimiter ; 

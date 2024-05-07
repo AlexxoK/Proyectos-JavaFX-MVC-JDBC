@@ -9,6 +9,7 @@ public class Cliente {
     private String direccion;
 
     public Cliente() {
+        
     }
 
     public Cliente(int clienteId, String nombre, String apellido, String telefono, String nit, String direccion) {
