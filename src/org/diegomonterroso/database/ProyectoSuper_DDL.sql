@@ -157,4 +157,5 @@ insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, hor
 insert into Facturas(fecha, hora, clienteId, empleadoId, total) values
     ('2024-03-23', '20:00:00', 1, 1, '17.00');
     
-Select * from TicketSoporte;
+insert into TicketSoporte(descripcionTicket, estatus, clienteId, facturaId) values
+    ('Error de prueba', 'Recien creado', 1, 1);

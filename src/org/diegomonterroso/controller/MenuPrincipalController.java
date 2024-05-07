@@ -11,8 +11,9 @@ import org.diegomonterroso.system.Main;
 
 public class MenuPrincipalController implements Initializable {
     private Main stage;
+    
     @FXML
-    MenuItem btnClientes, btnTicketSoporte;
+    MenuItem btnClientes, btnTicketSoporte, btnCargos;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -20,6 +21,8 @@ public class MenuPrincipalController implements Initializable {
             stage.menuClienteView();
         }else if(event.getSource() == btnTicketSoporte){
             stage.menuTicketSoporteView();
+        }else if(event.getSource() == btnCargos){
+            stage.menuCargoView();
         }
     }
     

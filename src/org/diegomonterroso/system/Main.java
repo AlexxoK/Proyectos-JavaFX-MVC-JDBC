@@ -8,7 +8,9 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.diegomonterroso.controller.FormCargoController;
 import org.diegomonterroso.controller.FormClienteController;
+import org.diegomonterroso.controller.MenuCargoController;
 import org.diegomonterroso.controller.MenuClienteController;
 import org.diegomonterroso.controller.MenuPrincipalController;
 import org.diegomonterroso.controller.MenuTicketSoporteController;
@@ -75,6 +77,25 @@ public class Main extends Application {
         try{
             MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml", 1200, 750);
             menuTicketSoporteView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuCargoView(){
+        try{
+            MenuCargoController menuCargoView = (MenuCargoController)switchScene("MenuCargoView.fxml", 1200, 750);
+            menuCargoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formCargoView(int op){
+        try{
+            FormCargoController formCargoView = (FormCargoController)switchScene("FormCargoView.fxml", 500, 750);
+            formCargoView.setOp(op);
+            formCargoView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
