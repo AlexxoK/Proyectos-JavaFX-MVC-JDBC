@@ -41,10 +41,10 @@ create table Distribuidores(
 );
 
 create table CategoriaProductos(
-	categoriaProductosId int not null auto_increment,
+	categoriaProductoId int not null auto_increment,
     nombreCategoria varchar(30) not null,
     descripcionCategoria varchar(100) not null,
-    Primary key PK_categoriaProductosId (categoriaProductosId)
+    Primary key PK_categoriaProductoId (categoriaProductoId)
 );
 
 create table Empleados(
@@ -100,12 +100,12 @@ create table Productos(
     precioCompra decimal(10, 2) not null,
     imagenProducto blob,
     distribuidorId int not null,
-    categoriaProductosId int not null,
+    categoriaProductoId int not null,
     primary key PK_productoId (productoId),
     constraint FK_Productos_Distribuidores foreign key Distribuidores (distribuidorId)
 	references Distribuidores (distribuidorId),
-    constraint FK_Productos_CategoriaProductos foreign key CategoriaProductos (categoriaProductosId)
-		references CategoriaProductos (categoriaProductosId)
+    constraint FK_Productos_CategoriaProductos foreign key CategoriaProductos (categoriaProductoId)
+		references CategoriaProductos (categoriaProductoId)
 );
 
 create table Promociones(
@@ -162,3 +162,9 @@ insert into Facturas(fecha, hora, clienteId, empleadoId, total) values
     
 insert into TicketSoporte(descripcionTicket, estatus, clienteId, facturaId) values
     ('Error de prueba', 'Recien creado', 1, 1);
+    
+insert into Distribuidores(nombreDistribuidor, telefonoDistribuidor, nitDistribuidor, direccionDistribuidor, web) values
+    ('Jose', '4321-1234', '23548691','Ciudad', 'MercadoLaQuinta');
+    
+insert into CategoriaProductos(nombreCategoria, descripcionCategoria) values
+    ('Electronicos', 'Variedad de instrumentos electronicos.');

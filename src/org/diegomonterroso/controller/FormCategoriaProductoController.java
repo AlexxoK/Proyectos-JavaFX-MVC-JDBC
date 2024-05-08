@@ -10,14 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.diegomonterroso.dao.Conexion;
-import org.diegomonterroso.dto.DistribuidorDTO;
-import org.diegomonterroso.model.Distribuidor;
+import org.diegomonterroso.dto.CategoriaProductoDTO;
+import org.diegomonterroso.model.CategoriaProducto;
 import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
-public class FormDistribuidorController implements Initializable {
+public class FormCategoriaProductoController implements Initializable {
     private Main stage;
     
     private int op;
@@ -26,35 +27,37 @@ public class FormDistribuidorController implements Initializable {
     private static PreparedStatement statement = null;
     
     @FXML
-    TextField tfDistribuidorId, tfNombre, tfTelefono, tfNit, tfDireccion, tfWeb;
+    TextField tfCategoriaProductoId, tfNombre;
     
+    @FXML
+    TextArea taDescripcion;
     @FXML
     Button btnGuardar, btnCancelar;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnCancelar){
-            stage.menuDistribuidorView();
-            DistribuidorDTO.getDistribuidorDTO().setDistribuidor(null);
+            stage.menuCategoriaProductoView();
+            CategoriaProductoDTO.getCategoriaProductoDTO().setCategoriaProducto(null);
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
-                if(!tfNombre.getText().equals("") && !tfTelefono.getText().equals("") && !tfNit.getText().equals("") && !tfDireccion.getText().equals("") && !tfWeb.getText().equals("")){
-                    agregarDistribuidor();
+                if(!tfNombre.getText().equals("") && !taDescripcion.getText().equals("")){
+                    agregarCategoriaProducto();
                     SuperKinalAlert.getInstance().mostrarAlertaInformacion(400);
-                    stage.menuDistribuidorView();
+                    stage.menuCategoriaProductoView();
                 }else{
                     SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
                     tfNombre.requestFocus();
                 }
             }else if(op == 2){
-                if(!tfNombre.getText().equals("") && !tfTelefono.getText().equals("") && !tfNit.getText().equals("") && !tfDireccion.getText().equals("") && !tfWeb.getText().equals("")){
+                if(!tfNombre.getText().equals("") && !taDescripcion.getText().equals("")){
                     if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK){
-                        editarDistribuidor();
-                        DistribuidorDTO.getDistribuidorDTO().setDistribuidor(null);
+                        editarCategoriaProducto();
+                        CategoriaProductoDTO.getCategoriaProductoDTO().setCategoriaProducto(null);
                         SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
-                        stage.menuDistribuidorView();
+                        stage.menuCategoriaProductoView();
                     }else{
-                        stage.menuDistribuidorView();
+                        stage.menuCategoriaProductoView();
                     }
                 }else{
                     SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
@@ -66,30 +69,24 @@ public class FormDistribuidorController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(DistribuidorDTO.getDistribuidorDTO().getDistribuidor() != null){
-            cargarDatos(DistribuidorDTO.getDistribuidorDTO().getDistribuidor());
+        if(CategoriaProductoDTO.getCategoriaProductoDTO().getCategoriaProducto() != null){
+            cargarDatos(CategoriaProductoDTO.getCategoriaProductoDTO().getCategoriaProducto());
         }
     }
     
-    public void cargarDatos(Distribuidor distribuidor){
-        tfDistribuidorId.setText(Integer.toString(distribuidor.getDistribuidorId()));
-        tfNombre.setText(distribuidor.getNombreDistribuidor());
-        tfTelefono.setText(distribuidor.getTelefonoDistribuidor());
-        tfNit.setText(distribuidor.getNitDistribuidor());
-        tfDireccion.setText(distribuidor.getDireccionDistribuidor());
-        tfWeb.setText(distribuidor.getWeb());
+    public void cargarDatos(CategoriaProducto categoriaProducto){
+        tfCategoriaProductoId.setText(Integer.toString(categoriaProducto.getCategoriaProductoId()));
+        tfNombre.setText(categoriaProducto.getNombreCategoria());
+        taDescripcion.setText(categoriaProducto.getDescripcionCategoria());
     }
     
-    public void agregarDistribuidor(){
+    public void agregarCategoriaProducto(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarDistribuidor(?, ?, ?, ?, ?)";
+            String sql = "call sp_agregarCategoriaProducto(?, ?)";
             statement = conexion.prepareStatement(sql);
             statement.setString(1, tfNombre.getText());
-            statement.setString(2, tfTelefono.getText());
-            statement.setString(3, tfNit.getText());
-            statement.setString(4, tfDireccion.getText());
-            statement.setString(5, tfWeb.getText());
+            statement.setString(2, taDescripcion.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -107,17 +104,14 @@ public class FormDistribuidorController implements Initializable {
         }
     }
     
-    public void editarDistribuidor(){
+    public void editarCategoriaProducto(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarDistribuidor(?, ?, ?, ?, ?, ?)";
+            String sql = "call sp_editarCategoriaProducto(?, ?, ?)";
             statement = conexion.prepareCall(sql);
-            statement.setInt(1, Integer.parseInt(tfDistribuidorId.getText()));
+            statement.setInt(1, Integer.parseInt(tfCategoriaProductoId.getText()));
             statement.setString(2, tfNombre.getText());
-            statement.setString(3, tfTelefono.getText());
-            statement.setString(4, tfNit.getText());
-            statement.setString(5, tfDireccion.getText());
-            statement.setString(6, tfWeb.getText());
+            statement.setString(3, taDescripcion.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());

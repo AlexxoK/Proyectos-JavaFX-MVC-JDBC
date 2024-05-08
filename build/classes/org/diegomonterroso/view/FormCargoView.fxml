@@ -19,7 +19,7 @@
       </ImageView>
       <TextField fx:id="tfCargoId" editable="false" layoutX="36.0" layoutY="146.0" prefHeight="32.0" prefWidth="193.0" promptText="Cargo Id" />
       <TextField fx:id="tfNombre" layoutX="36.0" layoutY="228.0" prefHeight="32.0" prefWidth="193.0" promptText="Ingrese el nombre del cargo" />
-      <TextArea fx:id="taDescripcion" layoutX="33.0" layoutY="319.0" prefHeight="126.0" prefWidth="229.0" promptText="Ingrese la descripcion del cargo" />
+      <TextArea fx:id="taDescripcion" layoutX="33.0" layoutY="319.0" prefHeight="126.0" prefWidth="229.0" promptText="Ingrese la descripcion del cargo" wrapText="true" />
       <GridPane layoutX="8.0" layoutY="479.0" prefHeight="89.0" prefWidth="278.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

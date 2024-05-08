@@ -9,9 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.diegomonterroso.controller.FormCargoController;
+import org.diegomonterroso.controller.FormCategoriaProductoController;
 import org.diegomonterroso.controller.FormClienteController;
 import org.diegomonterroso.controller.FormCompraController;
+import org.diegomonterroso.controller.FormDistribuidorController;
 import org.diegomonterroso.controller.MenuCargoController;
+import org.diegomonterroso.controller.MenuCategoriaProductoController;
 import org.diegomonterroso.controller.MenuClienteController;
 import org.diegomonterroso.controller.MenuCompraController;
 import org.diegomonterroso.controller.MenuDistribuidorController;
@@ -134,9 +137,28 @@ public class Main extends Application {
     
     public void formDistribuidorView(int op){
         try{
-            FormCompraController formCompraView = (FormCompraController)switchScene("FormCompraView.fxml", 500, 750);
-            formCompraView.setOp(op);
-            formCompraView.setStage(this);
+            FormDistribuidorController formDistribuidorView = (FormDistribuidorController)switchScene("FormDistribuidorView.fxml", 500, 750);
+            formDistribuidorView.setOp(op);
+            formDistribuidorView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuCategoriaProductoView(){
+        try{
+            MenuCategoriaProductoController menuCategoriaProductoView = (MenuCategoriaProductoController)switchScene("MenuCategoriaProductoView.fxml", 1200, 750);
+            menuCategoriaProductoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formCategoriaProductoView(int op){
+        try{
+            FormCategoriaProductoController formCategoriaProductoView = (FormCategoriaProductoController)switchScene("FormCategoriaProductoView.fxml", 500, 750);
+            formCategoriaProductoView.setOp(op);
+            formCategoriaProductoView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -145,5 +167,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+  
 }
