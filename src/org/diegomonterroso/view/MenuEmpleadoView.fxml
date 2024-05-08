@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.diegomonterroso.controller.MenuEmpleadoController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Menu%20Empleados.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfEmpleadoId" editable="false" layoutX="126.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" promptText="Empledo Id" />
+      <TextField fx:id="tfNombre" layoutX="125.0" layoutY="331.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el nombre" />
+      <TextField fx:id="tfApellido" layoutX="125.0" layoutY="419.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el apellido" />
+      <TextField fx:id="tfSueldo" layoutX="125.0" layoutY="501.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el sueldo" />
+      <TextField fx:id="tfHoraEntrada" layoutX="125.0" layoutY="591.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese la hora de entrada" />
+      <TextField fx:id="tfHoraSalida" layoutX="125.0" layoutY="680.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese la hora de salida" />
+      <ComboBox fx:id="cmbCargo" layoutX="516.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" />
+      <ComboBox fx:id="cmbEncargado" layoutX="820.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" />
+      <TableView fx:id="tblEmpleados" layoutX="381.0" layoutY="301.0" onMouseClicked="#cargarForm" prefHeight="358.0" prefWidth="679.0">
+        <columns>
+          <TableColumn fx:id="colEmpleadoId" prefWidth="48.0" text="empleadoId" />
+          <TableColumn fx:id="colNombre" prefWidth="111.0" text="nombre" />
+            <TableColumn fx:id="colApellido" prefWidth="110.0" text="apellido" />
+            <TableColumn fx:id="colSueldo" prefWidth="64.0" text="sueldo" />
+            <TableColumn fx:id="colHoraEntrada" prefWidth="75.0" text="horaEntrada" />
+            <TableColumn fx:id="colHoraSalida" prefWidth="75.0" text="horaSalida" />
+            <TableColumn fx:id="colCargo" prefWidth="100.0" text="cargo" />
+            <TableColumn fx:id="colEncargadoId" prefWidth="95.0" text="encargado" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnGuardar" layoutX="381.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />
+      <Button fx:id="btnVaciar" alignment="CENTER" layoutX="495.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar" wrapText="true" />
+      <Button fx:id="btnRegresar" layoutX="14.0" layoutY="712.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Regresar" />
+   </children>
+</AnchorPane>

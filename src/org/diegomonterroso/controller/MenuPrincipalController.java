@@ -13,7 +13,7 @@ public class MenuPrincipalController implements Initializable {
     private Main stage;
     
     @FXML
-    MenuItem btnClientes, btnTicketSoporte, btnCargos, btnCompras, btnDistribuidores, btnCategoriaProductos;
+    MenuItem btnClientes, btnTicketSoporte, btnCargos, btnCompras, btnDistribuidores, btnCategoriaProductos, btnEmpleados;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -29,6 +29,8 @@ public class MenuPrincipalController implements Initializable {
             stage.menuDistribuidorView();
         }else if(event.getSource() == btnCategoriaProductos){
             stage.menuCategoriaProductoView();
+        }else if(event.getSource() == btnEmpleados){
+            stage.menuEmpleadoView();
         }
     }
     

@@ -95,7 +95,7 @@ public class MenuClienteController implements Initializable {
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarClientes()";
+            String sql = "call sp_ListarClientes()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             

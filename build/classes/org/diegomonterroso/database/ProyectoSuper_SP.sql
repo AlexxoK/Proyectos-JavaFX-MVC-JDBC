@@ -240,7 +240,7 @@ Delimiter $$
 Create procedure sp_ListarCategoriaProductos()
 Begin
 	Select
-		CategoriaProductos.categoriaProductosId,
+		CategoriaProductos.categoriaProductoId,
 		CategoriaProductos.nombreCategoria,
 		CategoriaProductos.descripcionCategoria
 			From CategoriaProductos;
@@ -251,7 +251,7 @@ Delimiter $$
 Create procedure sp_EliminarCategoriaProducto(In capId int)
 Begin
 	Delete from CategoriaProductos
-		Where categoriaProductosId = capId;
+		Where categoriaProductoId = capId;
 End$$
 Delimiter ;
 
@@ -259,11 +259,11 @@ Delimiter $$
 Create procedure sp_BuscarCategoriaProducto(In capId int)
 Begin
 	Select
-		CategoriaProductos.categoriaProductosId,
+		CategoriaProductos.categoriaProductoId,
 		CategoriaProductos.nombreCategoria,
 		CategoriaProductos.descripcionCategoria
 			From CategoriaProductos
-				Where categoriaProductosId = capId;
+				Where categoriaProductoId = capId;
 End$$
 Delimiter ;
 
@@ -274,7 +274,7 @@ Begin
 		Set
 			nombreCategoria = nom,
 			descripcionCategoria = des
-				Where categoriaProductosId = capId;
+				Where categoriaProductoId = capId;
 End$$
 Delimiter ;
 
