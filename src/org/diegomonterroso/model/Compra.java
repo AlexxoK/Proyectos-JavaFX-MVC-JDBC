@@ -1,6 +1,6 @@
 package org.diegomonterroso.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Compra {
     private int compraId;

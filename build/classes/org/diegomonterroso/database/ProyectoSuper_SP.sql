@@ -462,28 +462,23 @@ end $$
 delimiter ;
 
 delimiter $$
-create procedure sp_agregarEmpleado(In nom varchar(30), In ape varchar(30), In sue decimal(10,2), In horaE time, In horaS time, In carId int)
+create procedure sp_agregarEmpleado(In nom varchar(30), In ape varchar(30), In sue decimal(10,2), In horaE time, In horaS time, In carId int, In encId int)
 begin
-    insert into Empleados(nombreEmpleado,apellidoEmpleado,sueldo,horaEntrada,horaSalida,cargoId) values
-		(nom, ape, sue, horaE, horaS, carId);
+    insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId) values
+		(nom, ape, sue, horaE, horaS, carId, encId);
 end $$
 delimiter ;
 
 delimiter $$
 create procedure sp_listarEmpleados()
 begin
-    select
-		Empleados.empleadoId,
-        Empleados.nombreEmpleado,
-        Empleados.apellidoEmpleado,
-        Empleados.sueldo,
-        Empleados.horaEntrada,
-        Empleados.horaSalida,
-        Empleados.cargoId,
-        Empleados.encargadoId
-			from Empleados;
+	select E.empleadoId, E.nombreEmpleado, E.apellidoEmpleado, E.sueldo, E.horaEntrada, E.horaSalida,
+		   concat("Id: ", C.cargoId, " | ", C.nombreCargo, " | ", C.descripcionCargo, " ") As Cargo, E.encargadoId As Encargado from Empleados E
+           Join Cargos C on E.cargoId = C.cargoId;
 end $$
 delimiter ;
+
+call sp_listarEmpleados();
 
 delimiter $$
 create procedure sp_eliminarEmpleado(In empId int)

@@ -13,15 +13,15 @@
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Menu%20Empleados.png" />
+            <Image url="@../image/Fondo%20MenuEmpleados.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfEmpleadoId" editable="false" layoutX="126.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" promptText="Empledo Id" />
+      <TextField fx:id="tfEmpleadoId" editable="false" layoutX="126.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" promptText="Empleado Id" />
       <TextField fx:id="tfNombre" layoutX="125.0" layoutY="331.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el nombre" />
       <TextField fx:id="tfApellido" layoutX="125.0" layoutY="419.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el apellido" />
-      <TextField fx:id="tfSueldo" layoutX="125.0" layoutY="501.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el sueldo" />
-      <TextField fx:id="tfHoraEntrada" layoutX="125.0" layoutY="591.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese la hora de entrada" />
-      <TextField fx:id="tfHoraSalida" layoutX="125.0" layoutY="680.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese la hora de salida" />
+      <TextField fx:id="tfSueldo" layoutX="125.0" layoutY="501.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el sueldo (00.00)" />
+      <TextField fx:id="tfHoraEntrada" layoutX="125.0" layoutY="591.0" prefHeight="32.0" prefWidth="217.0" promptText="Ingrese la hora  (HH:MM:SS)" />
+      <TextField fx:id="tfHoraSalida" layoutX="125.0" layoutY="680.0" prefHeight="32.0" prefWidth="218.0" promptText="Ingrese la hora  (HH:MM:SS)" />
       <ComboBox fx:id="cmbCargo" layoutX="516.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" />
       <ComboBox fx:id="cmbEncargado" layoutX="820.0" layoutY="245.0" prefHeight="32.0" prefWidth="191.0" />
       <TableView fx:id="tblEmpleados" layoutX="381.0" layoutY="301.0" onMouseClicked="#cargarForm" prefHeight="358.0" prefWidth="679.0">
@@ -39,5 +39,8 @@
       <Button fx:id="btnGuardar" layoutX="381.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />
       <Button fx:id="btnVaciar" alignment="CENTER" layoutX="495.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar" wrapText="true" />
       <Button fx:id="btnRegresar" layoutX="14.0" layoutY="712.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Regresar" />
+      <Button fx:id="btnEliminar" alignment="CENTER" layoutX="612.0" layoutY="675.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Eliminar" wrapText="true" />
+      <TextField fx:id="tfEmpleadoBuscarId" layoutX="738.0" layoutY="683.0" prefHeight="26.0" prefWidth="264.0" promptText="Ingrese el Id del empleado a buscar" />
+      <Button fx:id="btnBuscar" layoutX="1008.0" layoutY="683.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
    </children>
 </AnchorPane>

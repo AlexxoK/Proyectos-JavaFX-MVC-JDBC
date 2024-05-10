@@ -25,7 +25,7 @@ import org.diegomonterroso.model.TicketSoporte;
 import org.diegomonterroso.system.Main;
 
 public class MenuTicketSoporteController implements Initializable {
-    Main stage;
+    private Main stage;
     
     private Connection conexion = null;
     private PreparedStatement statement = null;
@@ -90,7 +90,7 @@ public class MenuTicketSoporteController implements Initializable {
     }
     
     public void cargarCmbFactura(){
-        cmbFactura.getItems().add("1");
+        cmbFactura.getItems().add(1);
     }
     
     public void vaciarForm(){

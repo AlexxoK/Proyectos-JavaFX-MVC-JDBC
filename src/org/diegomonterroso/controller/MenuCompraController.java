@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -84,7 +84,7 @@ public class MenuCompraController implements Initializable {
         }else{
             tblCompras.setItems(listarCompras());
             colCompraId.setCellValueFactory(new PropertyValueFactory<Compra, Integer>("compraId"));
-            colFecha.setCellValueFactory(new PropertyValueFactory<Compra, Time>("fechaCompra" + LocalDate.now()));
+            colFecha.setCellValueFactory(new PropertyValueFactory<Compra, Date>("fechaCompra"));
             colTotal.setCellValueFactory(new PropertyValueFactory<Compra, Double>("totalCompra"));
         }
     }
@@ -100,7 +100,7 @@ public class MenuCompraController implements Initializable {
             
             while(resultSet.next()){
                 int compraId = resultSet.getInt("compraId");
-                Time fechaCompra = resultSet.getTime("fechaCompra" + LocalDate.now());  
+                Date fechaCompra = resultSet.getDate("fechaCompra");  
                 double totalCompra = resultSet.getDouble("totalCompra");
                 
                 compras.add(new Compra(compraId, fechaCompra, totalCompra));
@@ -160,7 +160,7 @@ public class MenuCompraController implements Initializable {
             
             if(resultSet.next()){
                 int compraId = resultSet.getInt("compraId");
-                Time fechaCompra = resultSet.getTime("fechaCompra" + LocalDate.now());  
+                Date fechaCompra = resultSet.getDate("fechaCompra");  
                 double totalCompra = resultSet.getDouble("totalCompra");
                 
                 compra = new Compra(compraId, fechaCompra, totalCompra);

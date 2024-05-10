@@ -2,7 +2,7 @@ package org.diegomonterroso.model;
 
 public class Encargado {
     private int encargadoId;
-
+    
     public Encargado() {
     }
 
@@ -20,8 +20,8 @@ public class Encargado {
 
     @Override
     public String toString() {
-        return "Encargado{" + "encargadoId=" + encargadoId + '}';
+        return "Id: " + encargadoId;
     }
-    
+
     
 }

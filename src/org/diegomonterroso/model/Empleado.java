@@ -112,7 +112,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "empleadoId=" + empleadoId + ", nombreEmpleado=" + nombreEmpleado + ", apellidoEmpleado=" + apellidoEmpleado + ", sueldo=" + sueldo + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", cargoId=" + cargoId + ", cargo=" + cargo + ", encargadoId=" + encargadoId + ", encargado=" + encargado + '}';
+        return "Id: " + empleadoId + " | " + nombreEmpleado;
     }
 
     
