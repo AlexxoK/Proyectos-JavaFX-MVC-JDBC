@@ -33,9 +33,9 @@ public class MenuPrincipalController implements Initializable {
             stage.menuEmpleadoView();
         }else if(event.getSource() == btnFacturas){
             stage.menuFacturaView();
-        }else if(event.getSource() == btnProductos){
+        }/**else if(event.getSource() == btnProductos){
             stage.menuProductoView();
-        }
+        }**/
     }
     
     @Override
