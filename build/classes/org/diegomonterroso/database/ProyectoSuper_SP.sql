@@ -473,7 +473,7 @@ delimiter $$
 create procedure sp_listarEmpleados()
 begin
 	select E.empleadoId, E.nombreEmpleado, E.apellidoEmpleado, E.sueldo, E.horaEntrada, E.horaSalida,
-		   concat("Id: ", C.cargoId, " | ", C.nombreCargo, " | ", C.descripcionCargo, " ") As Cargo, E.encargadoId As Encargado from Empleados E
+		   concat("Id: ", C.cargoId, " | ", C.nombreCargo, " | ", C.descripcionCargo) As Cargo, concat("Id: ", E.encargadoId) As Encargado from Empleados E
            Join Cargos C on E.cargoId = C.cargoId;
 end $$
 delimiter ;
@@ -542,16 +542,14 @@ delimiter ;
 delimiter $$
 create procedure sp_listarFacturas()
 begin
-    select
-        Facturas.facturaId,
-        Facturas.fecha,
-        Facturas.hora,
-        Facturas.clienteId,
-        Facturas.empleadoId,
-        Facturas.total
-			from Facturas;
+	select F.facturaId, F.fecha, F.hora, F.total,
+		   concat("Id: ", C.clienteId, " | ", C.nombre, " ", C.apellido) As Cliente, concat("Id: ", E.empleadoId, " | ", E.nombreEmpleado) As Empleado from Facturas F
+           Join Clientes C on F.clienteId = C.clienteId
+           Join Empleados E on F.empleadoId = E.empleadoId;
 end $$
 delimiter ;
+           
+call sp_listarFacturas();
 
 delimiter $$
 create procedure sp_eliminarFactura(In facId int)
@@ -692,3 +690,39 @@ begin
 				where detalleCompraId = detComId;
 end $$
 delimiter ;
+
+Delimiter $$
+create procedure sp_asignarTotalFactura(in facId int, in tot decimal (10,2))
+Begin
+	Update Facturas
+		set total = tot
+			where facturaId =facId; 
+End $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_modificarStock(in detFacId int, in cantA int)
+begin
+	Update Productos
+		set cantidadStock = cantA
+			where productoId = detFacId;
+end $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_asignarTotalCompra(in comId int, in totC decimal (10,2))
+Begin
+	Update Compras
+		set totalCompra = totC
+			where compraId = comId; 
+End $$
+Delimiter ;
+
+Delimiter $$
+create procedure sp_modificarStockCompra(in proId int, in cantA int)
+begin
+	Update Productos
+		set cantidadStock = cantA
+			where productoId = proId;
+end $$
+Delimiter ;

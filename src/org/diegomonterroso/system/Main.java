@@ -21,6 +21,7 @@ import org.diegomonterroso.controller.MenuDistribuidorController;
 import org.diegomonterroso.controller.MenuEmpleadoController;
 import org.diegomonterroso.controller.MenuFacturaController;
 import org.diegomonterroso.controller.MenuPrincipalController;
+import org.diegomonterroso.controller.MenuProductoController;
 import org.diegomonterroso.controller.MenuTicketSoporteController;
 
 public class Main extends Application {
@@ -183,6 +184,15 @@ public class Main extends Application {
             System.out.println(e.getMessage());
         }
     }
+    
+    /**public void menuProductoView(){
+        try{
+            MenuProductoController menuProductoView = (MenuProductoController)switchScene("MenuProductoView.fxml", 1200, 750);
+            menuProductoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }**/
     
     public static void main(String[] args) {
         launch(args);
