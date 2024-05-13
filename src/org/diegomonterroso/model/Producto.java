@@ -1,7 +1,5 @@
 package org.diegomonterroso.model;
 
-import java.sql.Blob;
-
 public class Producto {
     private int productoId;
     private String nombreProducto;
@@ -10,7 +8,6 @@ public class Producto {
     private double precioVentaUnitario;
     private double precioVentaMayor;
     private double precioCompra;
-    private Blob imagenProducto;
     
     private int distribuidorId;
     private String distribuidor;
@@ -21,7 +18,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, Blob imagenProducto, String distribuidor, String categoriaProducto) {
+    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, String distribuidor, String categoriaProducto) {
         this.productoId = productoId;
         this.nombreProducto = nombreProducto;
         this.descripcionProducto = descripcionProducto;
@@ -29,7 +26,6 @@ public class Producto {
         this.precioVentaUnitario = precioVentaUnitario;
         this.precioVentaMayor = precioVentaMayor;
         this.precioCompra = precioCompra;
-        this.imagenProducto = imagenProducto;
         this.distribuidor = distribuidor;
         this.categoriaProducto = categoriaProducto;
     }
@@ -90,14 +86,6 @@ public class Producto {
         this.precioCompra = precioCompra;
     }
 
-    public Blob getImagenProducto() {
-        return imagenProducto;
-    }
-
-    public void setImagenProducto(Blob imagenProducto) {
-        this.imagenProducto = imagenProducto;
-    }
-
     public int getDistribuidorId() {
         return distribuidorId;
     }
@@ -132,7 +120,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "productoId=" + productoId + ", nombreProducto=" + nombreProducto + ", descripcionProducto=" + descripcionProducto + ", cantidadStock=" + cantidadStock + ", precioVentaUnitario=" + precioVentaUnitario + ", precioVentaMayor=" + precioVentaMayor + ", precioCompra=" + precioCompra + ", imagenProducto=" + imagenProducto + ", distribuidorId=" + distribuidorId + ", distribuidor=" + distribuidor + ", categoriaProductoId=" + categoriaProductoId + ", categoriaProducto=" + categoriaProducto + '}';
+        return "Id: " + productoId + " | " + nombreProducto + " | " + descripcionProducto;
     }
     
     

@@ -11,17 +11,18 @@ public class TicketSoporte {
     
     //Si no se usa de ninguna manera (Objeto o Join), solamente se deja como un Id
     private int facturaId;
+    private String factura;
     
     public TicketSoporte(){
     
     }
 
-    public TicketSoporte(int ticketSoporteId, String descripcion, String estatus, String cliente, int facturaId) {
+    public TicketSoporte(int ticketSoporteId, String descripcion, String estatus, String cliente, String factura) {
         this.ticketSoporteId = ticketSoporteId;
         this.descripcion = descripcion;
         this.estatus = estatus;
         this.cliente = cliente;
-        this.facturaId = facturaId;
+        this.factura = factura;
     }
 
     public int getTicketSoporteId() {
@@ -70,6 +71,14 @@ public class TicketSoporte {
 
     public void setFacturaId(int facturaId) {
         this.facturaId = facturaId;
+    }
+
+    public String getFactura() {
+        return factura;
+    }
+
+    public void setFactura(String factura) {
+        this.factura = factura;
     }
 
     @Override

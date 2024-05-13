@@ -71,7 +71,7 @@ public class Distribuidor {
 
     @Override
     public String toString() {
-        return "Distribuidor{" + "distribuidorId=" + distribuidorId + ", nombreDistribuidor=" + nombreDistribuidor + ", telefonoDistribuidor=" + telefonoDistribuidor + ", nitDistribuidor=" + nitDistribuidor + ", direccionDistribuidor=" + direccionDistribuidor + ", web=" + web + '}';
+        return "Id: " + distribuidorId + " | " + nombreDistribuidor;
     }
     
     

@@ -29,7 +29,7 @@ create table Compras(
     totalCompra decimal(10, 2),
     primary key PK_compraId (compraId)
 );
--- COMPRAS PENDIENTE EN NETBEANS
+
 create table Distribuidores(
 	distribuidorId int not null auto_increment,
     nombreDistribuidor varchar(30) not null,
@@ -98,7 +98,6 @@ create table Productos(
     precioVentaUnitario decimal(10, 2) not null,
     precioVentaMayor decimal(10, 2) not null,
     precioCompra decimal(10, 2) not null,
-    imagenProducto blob,
     distribuidorId int not null,
     categoriaProductoId int not null,
     primary key PK_productoId (productoId),
@@ -168,3 +167,15 @@ insert into Distribuidores(nombreDistribuidor, telefonoDistribuidor, nitDistribu
     
 insert into CategoriaProductos(nombreCategoria, descripcionCategoria) values
     ('Electronicos', 'Variedad de instrumentos electronicos.');
+    
+insert into Productos(nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, distribuidorId, categoriaProductoId) values
+    ('Mouse', 'Mouse para computadora.', 15, 50.00, 100.00, 50.00, 1, 1);
+    
+insert into Promociones(precioPromocion, descripcionPromocion, fechaInicio, fechaFinalizacion, productoId) values
+	(15.00, 'Promocion de primavera.', '2024-01-01', '2024-01-02', 1);
+    
+insert into DetalleFactura(facturaId, productoId) values
+	(1, 1);
+    
+insert into DetalleCompra(cantidadCompra, productoId, compraId) values
+	(15, 1, 1);

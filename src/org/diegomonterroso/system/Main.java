@@ -17,11 +17,14 @@ import org.diegomonterroso.controller.MenuCargoController;
 import org.diegomonterroso.controller.MenuCategoriaProductoController;
 import org.diegomonterroso.controller.MenuClienteController;
 import org.diegomonterroso.controller.MenuCompraController;
+import org.diegomonterroso.controller.MenuDetalleCompraController;
+import org.diegomonterroso.controller.MenuDetalleFacturaController;
 import org.diegomonterroso.controller.MenuDistribuidorController;
 import org.diegomonterroso.controller.MenuEmpleadoController;
 import org.diegomonterroso.controller.MenuFacturaController;
 import org.diegomonterroso.controller.MenuPrincipalController;
 import org.diegomonterroso.controller.MenuProductoController;
+import org.diegomonterroso.controller.MenuPromocionController;
 import org.diegomonterroso.controller.MenuTicketSoporteController;
 
 public class Main extends Application {
@@ -185,14 +188,41 @@ public class Main extends Application {
         }
     }
     
-    /**public void menuProductoView(){
+    public void menuProductoView(){
         try{
             MenuProductoController menuProductoView = (MenuProductoController)switchScene("MenuProductoView.fxml", 1200, 750);
             menuProductoView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }**/
+    }
+    
+    public void menuPromocionView(){
+        try{
+            MenuPromocionController menuPromocionView = (MenuPromocionController)switchScene("MenuPromocionView.fxml", 1200, 750);
+            menuPromocionView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuDetalleFacturaView(){
+        try{
+            MenuDetalleFacturaController menuDetalleFacturaView = (MenuDetalleFacturaController)switchScene("MenuDetalleFacturaView.fxml", 1200, 750);
+            menuDetalleFacturaView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuDetalleCompraView(){
+        try{
+            MenuDetalleCompraController menuDetalleCompraView = (MenuDetalleCompraController)switchScene("MenuDetalleCompraView.fxml", 1200, 750);
+            menuDetalleCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
     
     public static void main(String[] args) {
         launch(args);

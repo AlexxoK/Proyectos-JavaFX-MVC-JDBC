@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.diegomonterroso.controller.MenuPromocionController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Fondo%20MenuPromociones.png" />
+         </image></ImageView>
+      <TextField fx:id="tfPromocionId" editable="false" layoutX="88.0" layoutY="245.0" prefHeight="33.0" prefWidth="194.0" promptText="Promocion Id" />
+      <TextField fx:id="tfPrecio" layoutX="88.0" layoutY="340.0" prefHeight="34.0" prefWidth="208.0" promptText="Ingrese el precio de la promo" />
+      <TextField fx:id="tfFechaInicio" layoutX="88.0" layoutY="546.0" prefHeight="34.0" prefWidth="226.0" promptText="Ingrese la fecha (YYYY-DD-MM)" />
+      <TextField fx:id="tfFechaFinalizacion" layoutX="88.0" layoutY="641.0" prefHeight="34.0" prefWidth="226.0" promptText="Ingrese la fecha (YYYY-DD-MM)" />
+      <TextArea fx:id="taDescripcion" layoutX="88.0" layoutY="441.0" prefHeight="65.0" prefWidth="225.0" promptText="Ingrese la descripcion de la promo" wrapText="true" />
+      <ComboBox fx:id="cmbProducto" layoutX="453.0" layoutY="245.0" prefHeight="33.0" prefWidth="194.0" />
+      <TableView fx:id="tblPromociones" layoutX="381.0" layoutY="306.0" onMouseClicked="#cargarForm" prefHeight="372.0" prefWidth="631.0">
+        <columns>
+          <TableColumn fx:id="colPromocionId" prefWidth="75.0" text="promocionId" />
+          <TableColumn fx:id="colPrecio" prefWidth="75.0" text="precioPromocion" />
+            <TableColumn fx:id="colDescripcion" prefWidth="194.4000244140625" text="descripcion" />
+            <TableColumn fx:id="colFechaInicio" prefWidth="96.0" text="fechaInicio" />
+            <TableColumn fx:id="colFechaFinalizacion" prefWidth="89.59991455078125" text="fechaFinalizacion" />
+            <TableColumn fx:id="colProducto" prefWidth="105.60009765625" text="producto" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnRegresar" layoutX="14.0" layoutY="714.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Regresar" />
+      <Button fx:id="btnEliminar" alignment="CENTER" layoutX="381.0" layoutY="688.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="17.0" prefWidth="62.0" text="Eliminar" wrapText="true" />
+      <TextField fx:id="tfPromocionBuscarId" layoutX="690.0" layoutY="687.0" prefHeight="26.0" prefWidth="264.0" promptText="Ingrese el Id del la promocion a buscar" />
+      <Button fx:id="btnBuscar" layoutX="960.0" layoutY="687.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
+      <Button fx:id="btnGuardar" layoutX="1058.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />
+      <Button fx:id="btnVaciar" alignment="CENTER" layoutX="1058.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar" wrapText="true" />
+   </children>
+</AnchorPane>
