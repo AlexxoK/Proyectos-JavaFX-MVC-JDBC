@@ -115,7 +115,7 @@ public class MenuTicketSoporteController implements Initializable {
     public int obtenerIndexCliente(){
         int index = 0;
         String clienteTbl = ((TicketSoporte)tblTickets.getSelectionModel().getSelectedItem()).getCliente();
-        for(int i = 0 ; i < cmbCliente.getItems().size() ; i++){
+        for(int i = 0 ; i <= cmbCliente.getItems().size() ; i++){
             String clienteCmb = cmbCliente.getItems().get(i).toString();
             
             if(clienteTbl.equals(clienteCmb)){

@@ -20,7 +20,7 @@
       <TextField fx:id="tfCantidad" layoutX="86.0" layoutY="335.0" prefHeight="34.0" prefWidth="231.0" promptText="Ingrese la cantidad de la compra" />
       <ComboBox fx:id="cmbProducto" layoutX="86.0" layoutY="436.0" prefHeight="34.0" prefWidth="203.0" />
       <ComboBox fx:id="cmbCompra" layoutX="86.0" layoutY="553.0" prefHeight="34.0" prefWidth="203.0" />
-      <TableView fx:id="tblDetalleCompras" layoutX="420.0" layoutY="252.0" prefHeight="381.0" prefWidth="620.0">
+      <TableView fx:id="tblDetalleCompras" layoutX="420.0" layoutY="252.0" onMouseClicked="#cargarForm" prefHeight="381.0" prefWidth="620.0">
         <columns>
           <TableColumn fx:id="colDetalleCompraId" prefWidth="75.0" text="detalleCompraId" />
           <TableColumn fx:id="colCantidad" prefWidth="99.19992065429688" text="cantidad" />
