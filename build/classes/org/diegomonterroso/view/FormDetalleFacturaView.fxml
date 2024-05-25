@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,16 +10,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.diegomonterroso.controller.FormCompraController">
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.diegomonterroso.controller.FormDetalleFacturaController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Fondo%20RegistroCompras.png" />
+            <Image url="@../image/Fondo%20DetalleFactura.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfCompraId" editable="false" layoutX="26.0" layoutY="145.0" prefHeight="34.0" prefWidth="183.0" promptText="Compra Id" />
-      <TextField fx:id="tfFecha" layoutX="26.0" layoutY="227.0" prefHeight="34.0" prefWidth="227.0" promptText="Ingrese la fecha (YYYY-MM-DD)" />
-      <GridPane layoutX="7.0" layoutY="661.0" prefHeight="89.0" prefWidth="278.0">
+      <GridPane layoutX="46.0" layoutY="607.0" prefHeight="89.0" prefWidth="278.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,8 +28,11 @@
          </rowConstraints>
          <children>
             <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Guardar" GridPane.halignment="CENTER" />
-            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="btnRegresarForm" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Regresar" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
+      <TextField fx:id="tfDetalleFacturaId" layoutX="33.0" layoutY="145.0" prefHeight="30.0" prefWidth="192.0" promptText="Detalle Factura Id" />
+      <ComboBox fx:id="cmbFactura" layoutX="33.0" layoutY="228.0" prefHeight="30.0" prefWidth="192.0" />
+      <ComboBox fx:id="cmbProducto" layoutX="33.0" layoutY="311.0" prefHeight="30.0" prefWidth="192.0" />
    </children>
 </AnchorPane>

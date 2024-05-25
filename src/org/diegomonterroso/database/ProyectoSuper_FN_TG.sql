@@ -1,7 +1,7 @@
 use superDB;
 
 Delimiter $$
-Create function fn_CalcularPromocion(prodId int) returns decimal(10,2) deterministic
+Create function fn_CalcularPromocion(proId int) returns decimal(10,2) deterministic
 Begin
     Declare resultado int default 0;
     Declare i int default 1;
@@ -110,7 +110,7 @@ begin
     totalLoop : loop
     fetch cursorDetalleCompra into curCantCompra, curProductoId, curCompraId;
     
-    if compId = curCompraId then
+    if comId = curCompraId then
 		set precio = (select P.precioCompra from Productos P where P.productoId = curProductoId);
 		set cantComprada = curCantCompra;
 		set totC = totC + (precio * cantComprada + (cantComprada*precio*0.12));

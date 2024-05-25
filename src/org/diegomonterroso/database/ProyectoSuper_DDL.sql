@@ -1,4 +1,4 @@
-drop database if exists superDB;
+-- drop database if exists superDB;
 
 create database if not exists superDB;
 

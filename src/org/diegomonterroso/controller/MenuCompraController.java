@@ -41,16 +41,17 @@ public class MenuCompraController implements Initializable {
     TableColumn colCompraId, colFecha, colTotal;
     
     @FXML
-    Button btnRegresar, btnAgregar, btnEditar, btnEliminar, btnBuscar;
+    Button btnRegresar, btnAgregar, btnEditar, btnEliminar, btnBuscar, btnDetalleC;
     
     @FXML
     TextField tfCompraId;
     
-    public void handleButtonAction(ActionEvent event){
+    public void handleButtonAction(ActionEvent event) {
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
         }else if(event.getSource() == btnAgregar){
-            stage.formCompraView(1);
+            agregarCompra();
+            cargarDatos();
         }else if(event.getSource() == btnEditar){
             CompraDTO.getCompraDTO().setCompra((Compra)tblCompras.getSelectionModel().getSelectedItem());
             stage.formCompraView(2);
@@ -59,20 +60,22 @@ public class MenuCompraController implements Initializable {
                 eliminarCompra(((Compra)tblCompras.getSelectionModel().getSelectedItem()).getCompraId());
                 cargarDatos();
             }
-        }else if(event.getSource() == btnBuscar){
+        }else if (event.getSource() == btnBuscar){
             tblCompras.getItems().clear();
-            
             if(tfCompraId.getText().equals("")){
                 cargarDatos();
+            
             }else{
                 op = 3;
                 cargarDatos();
             }
+        }else if(event.getSource() == btnDetalleC){
+            stage.formDetalleCompraView(1);
         }
     }
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
     }    
     
@@ -88,6 +91,29 @@ public class MenuCompraController implements Initializable {
         }
     }
 
+    public void agregarCompra(){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_agregarCompra()";
+            statement = conexion.prepareStatement(sql);
+            statement.execute();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(statement != null){
+                    statement.close();
+                }
+                
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
     public ObservableList<Compra> listarCompras(){
         ArrayList<Compra> compras = new ArrayList<>();
         

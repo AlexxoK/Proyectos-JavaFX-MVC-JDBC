@@ -18,8 +18,6 @@ import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.sql.Time;
 
 public class FormCompraController implements Initializable {
     private Main stage;
@@ -30,43 +28,31 @@ public class FormCompraController implements Initializable {
     private static PreparedStatement statement = null;
     
     @FXML
-    TextField tfCompraId, tfFecha, tfTotal;
+    TextField tfCompraId, tfFecha;
     
     @FXML
     Button btnGuardar, btnCancelar;
     
     @FXML
-    public void handleButtonAction(ActionEvent event){
-        if(event.getSource() == btnCancelar){
+    public void handleButtonAction(ActionEvent event) {
+    if (event.getSource() == btnCancelar) {
+        CompraDTO.getCompraDTO().setCompra(null);
+        stage.menuCompraView();
+    } else if (event.getSource() == btnGuardar) {
+        
             stage.menuCompraView();
-            CompraDTO.getCompraDTO().setCompra(null);
-        }else if(event.getSource() == btnGuardar){
-            if(op == 1){
-                if(!tfFecha.getText().equals("") && !tfTotal.getText().equals("")){
-                    agregarCompra();
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(400);
-                    stage.menuCompraView();
-                }else{
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
-                    tfFecha.requestFocus();
-                }
-            }else if(op == 2){
-                if(!tfFecha.getText().equals("") && !tfTotal.getText().equals("")){
-                    if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK){
-                        editarCompra();
-                        CompraDTO.getCompraDTO().setCompra(null);
-                        SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
-                        stage.menuCompraView();
-                    }else{
-                        stage.menuCompraView();
-                    }
-                }else{
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
-                    tfFecha.requestFocus();
-                }
+        if (op == 2) {
+            if (SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK) {
+                editarCompra();
+                CompraDTO.getCompraDTO().setCompra(null);
+                SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
+                stage.menuCompraView();
+            } else {
+                stage.menuCompraView();
             }
         }
     }
+}
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,46 +62,19 @@ public class FormCompraController implements Initializable {
     }    
     
     public void cargarDatos(Compra compra){
-        Date fechaCompra = compra.getFechaCompra();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaCompraStr = dateFormat.format(fechaCompra);
         tfCompraId.setText(Integer.toString(compra.getCompraId()));
-        tfFecha.setText(fechaCompraStr);
-        tfTotal.setText(Double.toString(compra.getTotalCompra()));
-    }
-    
-    public void agregarCompra(){
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarCompra(?, ?)";
-            statement = conexion.prepareStatement(sql);
-            statement.setString(1, tfFecha.getText());
-            statement.setString(2, tfTotal.getText());
-            statement.execute();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(statement != null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
+
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
+        tfFecha.setText(formatoFecha.format(compra.getFechaCompra()));
     }
     
     public void editarCompra(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarCompra(?, ?, ?)";
-            statement = conexion.prepareCall(sql);
+            String sql = "call sp_EditarCompra(?, ?)";
+            statement = conexion.prepareStatement(sql);
             statement.setInt(1, Integer.parseInt(tfCompraId.getText()));
-            statement.setString(2, tfFecha.getText());
-            statement.setString(3, tfTotal.getText());
+            statement.setString(2,tfFecha.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -124,6 +83,7 @@ public class FormCompraController implements Initializable {
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }

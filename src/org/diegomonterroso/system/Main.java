@@ -12,13 +12,14 @@ import org.diegomonterroso.controller.FormCargoController;
 import org.diegomonterroso.controller.FormCategoriaProductoController;
 import org.diegomonterroso.controller.FormClienteController;
 import org.diegomonterroso.controller.FormCompraController;
+import org.diegomonterroso.controller.FormDetalleCompraController;
+import org.diegomonterroso.controller.FormDetalleFacturaController;
 import org.diegomonterroso.controller.FormDistribuidorController;
+import org.diegomonterroso.controller.FormFacturaController;
 import org.diegomonterroso.controller.MenuCargoController;
 import org.diegomonterroso.controller.MenuCategoriaProductoController;
 import org.diegomonterroso.controller.MenuClienteController;
 import org.diegomonterroso.controller.MenuCompraController;
-import org.diegomonterroso.controller.MenuDetalleCompraController;
-import org.diegomonterroso.controller.MenuDetalleFacturaController;
 import org.diegomonterroso.controller.MenuDistribuidorController;
 import org.diegomonterroso.controller.MenuEmpleadoController;
 import org.diegomonterroso.controller.MenuFacturaController;
@@ -132,6 +133,16 @@ public class Main extends Application {
         }
     }
     
+    public void formDetalleCompraView(int op){
+        try{
+            FormDetalleCompraController formDetalleCompraView = (FormDetalleCompraController)switchScene("FormDetalleCompraView.fxml", 500, 750);
+            formDetalleCompraView.setOp(op);
+            formDetalleCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void menuDistribuidorView(){
         try{
             MenuDistribuidorController menuDistribuidorView = (MenuDistribuidorController)switchScene("MenuDistribuidorView.fxml", 1200, 750);
@@ -188,6 +199,26 @@ public class Main extends Application {
         }
     }
     
+    public void formFacturaView(int op){
+        try{
+            FormFacturaController formFacturaView = (FormFacturaController)switchScene("FormFacturaView.fxml", 500, 750);
+            formFacturaView.setOp(op);
+            formFacturaView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formDetalleFacturaView(int op){
+        try{
+            FormDetalleFacturaController formDetalleFacturaView = (FormDetalleFacturaController)switchScene("FormDetalleFacturaView.fxml", 500, 750);
+            formDetalleFacturaView.setOp(op);
+            formDetalleFacturaView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void menuProductoView(){
         try{
             MenuProductoController menuProductoView = (MenuProductoController)switchScene("MenuProductoView.fxml", 1200, 750);
@@ -201,24 +232,6 @@ public class Main extends Application {
         try{
             MenuPromocionController menuPromocionView = (MenuPromocionController)switchScene("MenuPromocionView.fxml", 1200, 750);
             menuPromocionView.setStage(this);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    public void menuDetalleFacturaView(){
-        try{
-            MenuDetalleFacturaController menuDetalleFacturaView = (MenuDetalleFacturaController)switchScene("MenuDetalleFacturaView.fxml", 1200, 750);
-            menuDetalleFacturaView.setStage(this);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    public void menuDetalleCompraView(){
-        try{
-            MenuDetalleCompraController menuDetalleCompraView = (MenuDetalleCompraController)switchScene("MenuDetalleCompraView.fxml", 1200, 750);
-            menuDetalleCompraView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
