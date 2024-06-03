@@ -1,4 +1,4 @@
-drop database if exists superDB;
+-- drop database if exists superDB;
 
 create database if not exists superDB;
 
@@ -167,13 +167,15 @@ insert into Clientes(nombre, apellido, telefono, nit, direccion) values
     ('Jesus', 'Sis', '1231-1231', '23548691-0', 'Ciudad');
  
 insert into Cargos(nombreCargo, descripcionCargo) values
-    ('Gerente de Billar', 'Se encarga de mantener todo en orden.');
+    ('Gerente de Supermercado', 'Se encarga de mantener todo en orden.'),
+    ('SubGerente', 'Ayuda a mantener todo en orden.');
     
 insert into Compras(fechaCompra, totalCompra) values
     ('2024-03-23', '100.00');
 
 insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId) values
-    ('Carlos', 'Orozco', '200.00', '15:00:00', '23:00:00', 1, 1);
+    ('Diego', 'Monterroso', '200.00', '15:00:00', '23:00:00', 1, 1),
+    ('Carlos', 'Orozco', '200.00', '15:00:00', '23:00:00', 2, 1);
     
 insert into Facturas(fecha, hora, clienteId, empleadoId, total) values
     ('2024-03-23', '20:00:00', 1, 1, '17.00');
@@ -202,3 +204,5 @@ insert into DetalleCompra(cantidadCompra, productoId, compraId) values
 insert into NivelesAcceso(nivelAcceso) values
     ('admin'),
     ('usuario');
+    
+select * from Usuarios;

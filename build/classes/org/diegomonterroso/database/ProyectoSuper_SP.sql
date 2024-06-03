@@ -687,11 +687,18 @@ end $$
 delimiter ;
 
 delimiter $$
-create procedure sp_buscarUsuario(usu varchar(40))
+create procedure sp_buscarUsuario(usu varchar(30))
 begin
 	select * from Usuarios
 		where usuario = usu;
 end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_listarNivelesAcceso()
+begin
+	select * from NivelesAcceso;
+end $$
 delimiter ;
 
 Delimiter $$
