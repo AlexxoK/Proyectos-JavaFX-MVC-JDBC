@@ -678,6 +678,22 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
+create procedure sp_agregarUsuario(In usu varchar(30), In con varchar(100), In nivAccId int, empId int)
+begin
+    insert into Usuarios(usuario, contrasenia, nivelAccesoId, empleadoId) values 
+		(usu, con, nivAccId, empId);
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_buscarUsuario(usu varchar(40))
+begin
+	select * from Usuarios
+		where usuario = usu;
+end$$
+delimiter ;
+
 Delimiter $$
 create procedure sp_asignarTotalFactura(in facId int, in tot decimal (10,2))
 Begin
