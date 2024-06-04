@@ -61,6 +61,7 @@ public class MenuEmpleadoController implements Initializable {
                     agregarEmpleado();
                     cargarDatos();
                     stage.formUsuarioView();
+                    op = 0;
                 }
             }else{
                 editarEmpleado();

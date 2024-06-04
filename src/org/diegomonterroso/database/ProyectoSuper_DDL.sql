@@ -1,4 +1,4 @@
--- drop database if exists superDB;
+drop database if exists superDB;
 
 create database if not exists superDB;
 
@@ -206,3 +206,9 @@ insert into NivelesAcceso(nivelAcceso) values
     ('usuario');
     
 select * from Usuarios;
+
+select * from DetalleFactura
+join Facturas on DetalleFactura.facturaId = Facturas.facturaId
+join Clientes on Facturas.clienteId = Clientes.clienteId
+join Productos on DetalleFactura.productoId = Productos.productoId
+where Facturas.facturaId = 1;
