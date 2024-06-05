@@ -1,4 +1,4 @@
--- drop database if exists superDB;
+drop database if exists superDB;
 
 create database if not exists superDB;
 
@@ -77,6 +77,8 @@ create table Facturas(
 		references Empleados (empleadoId)
 );
 
+call sp_agregarFactura(1, 1);
+
 create table TicketSoporte(
 	ticketSoporteId int not null auto_increment,
     descripcionTicket varchar (250),
@@ -107,6 +109,8 @@ create table Productos(
 		references CategoriaProductos (categoriaProductoId)
 );
 
+call sp_agregarProducto('Teclado', 'Teclado de computadora.', 20, 15.00, 10.00, 20.00, 1, 1);
+
 create table Promociones(
 	promocionId int not null auto_increment,
     precioPromocion decimal (10,2),
@@ -129,6 +133,8 @@ create table DetalleFactura(
     constraint FK_DetalleFactura_Productos foreign key Productos (productoId)
 		references Productos (productoId)
 );
+
+call sp_agregarDetalleFactura(2, 2);
 
 create table DetalleCompra(
 	detalleCompraId int not null auto_increment,
@@ -206,3 +212,9 @@ insert into NivelesAcceso(nivelAcceso) values
     ('usuario');
     
 select * from Usuarios;
+
+select * from DetalleFactura
+join Facturas on DetalleFactura.facturaId = Facturas.facturaId
+join Clientes on Facturas.clienteId = Clientes.clienteId
+join Productos on DetalleFactura.productoId = Productos.productoId
+where Facturas.facturaId = 1;

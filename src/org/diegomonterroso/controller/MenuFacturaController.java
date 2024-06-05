@@ -23,6 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.diegomonterroso.dao.Conexion;
 import org.diegomonterroso.dto.FacturaDTO;
 import org.diegomonterroso.model.Factura;
+import org.diegomonterroso.report.GenerarReporte;
 import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
@@ -45,7 +46,7 @@ public class MenuFacturaController implements Initializable {
     TableColumn colFacturaId, colFecha, colHora, colCliente, colEmpleado, colTotal;
     
     @FXML
-    Button btnAgregar, btnEditar, btnEliminar, btnDetalleF, btnBuscar, btnRegresar;
+    Button btnAgregar, btnEditar, btnEliminar, btnDetalleF, btnBuscar, btnRegresar, btnFinalizarFactura;
     
     @FXML
     public void handleButtonAction(ActionEvent event) {
@@ -94,7 +95,6 @@ public class MenuFacturaController implements Initializable {
             colEmpleado.setCellValueFactory(new PropertyValueFactory<Factura, String>("empleado"));
             colTotal.setCellValueFactory(new PropertyValueFactory<Factura, Double>("total"));
         }
-
     }
     
     public ObservableList<Factura> listarFacturas(){

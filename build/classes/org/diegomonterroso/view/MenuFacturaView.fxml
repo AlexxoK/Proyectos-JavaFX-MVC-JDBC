@@ -48,7 +48,7 @@
             <Button fx:id="btnDetalleF" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="0.0" prefWidth="80.0" text="Detalle" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <TextField fx:id="tfFacturaId" layoutX="853.0" layoutY="193.0" prefHeight="25.0" prefWidth="205.0" promptText="Ingrese el Id de la factura a buscar" />
+      <TextField fx:id="tfFacturaId" layoutX="825.0" layoutY="193.0" prefHeight="26.0" prefWidth="234.0" promptText="Ingrese el Id de la factura a buscar" />
       <Button fx:id="btnBuscar1" layoutX="1065.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
    </children>
 </AnchorPane>

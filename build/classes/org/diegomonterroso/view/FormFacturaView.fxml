@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.diegomonterroso.controller.FormFacturaController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.diegomonterroso.controller.FormFacturaController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -34,5 +33,6 @@
             <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
+      <Button fx:id="btnFinalizarFactura" layoutX="210.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="86.0" text="Finalizar Factura" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>
