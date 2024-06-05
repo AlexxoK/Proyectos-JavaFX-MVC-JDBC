@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import org.diegomonterroso.dao.Conexion;
 import org.diegomonterroso.model.Factura;
 import org.diegomonterroso.model.Producto;
+import org.diegomonterroso.report.GenerarReporte;
 import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
@@ -32,7 +33,7 @@ public class FormDetalleFacturaController implements Initializable {
     private static ResultSet resultSet = null;
     
     @FXML
-    Button btnGuardar, btnRegresarForm;
+    Button btnGuardar, btnRegresarForm, btnFinalizarFactura;
    
     @FXML
     TextField tfDetalleFacturaId;

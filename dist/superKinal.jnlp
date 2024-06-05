@@ -15,7 +15,7 @@
     <jar href="lib\jbcrypt-0.4.jar" size="17429" download="eager" />
     <jar href="lib\jrviewer-fx-0.1.1.jar" size="34441" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.12.jar" size="2020431" download="eager" />
-    <jar href="superKinal.jar" size="1717709" download="eager" />
+    <jar href="superKinal.jar" size="1728661" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="superKinal" >
     <param name="requiredFXVersion" value="8.0+"/>

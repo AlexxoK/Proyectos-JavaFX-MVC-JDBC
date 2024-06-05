@@ -33,6 +33,5 @@
             <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
-      <Button fx:id="btnFinalizarFactura" layoutX="210.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="86.0" text="Finalizar Factura" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

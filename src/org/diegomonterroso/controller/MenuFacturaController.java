@@ -40,7 +40,7 @@ public class MenuFacturaController implements Initializable {
     TableView tblFacturas;
     
     @FXML
-    TextField tfFacturaId;
+    TextField tfFactura, tfFacturaId;
     
     @FXML
     TableColumn colFacturaId, colFecha, colHora, colCliente, colEmpleado, colTotal;
@@ -55,6 +55,7 @@ public class MenuFacturaController implements Initializable {
             stage.menuPrincipalView();
         }else if(event.getSource() == btnAgregar){
             stage.formFacturaView(1);
+            //cargarDatos();
         }else if(event.getSource() == btnEditar){
             FacturaDTO.getFacturaDTO().setFactura((Factura)tblFacturas.getSelectionModel().getSelectedItem());
             stage.formFacturaView(2);
@@ -65,7 +66,7 @@ public class MenuFacturaController implements Initializable {
             }
         }else if (event.getSource() == btnBuscar){
             tblFacturas.getItems().clear();
-            if(tfFacturaId.getText().equals("")){
+            if(tfFactura.getText().equals("")){
                 cargarDatos();
             
             }else{
@@ -74,7 +75,9 @@ public class MenuFacturaController implements Initializable {
             }
         }else if(event.getSource() == btnDetalleF){
             stage.formDetalleFacturaView(1);
-        }
+        }/**else if(event.getSource() == btnFinalizarFactura){
+                GenerarReporte.getInstance().generarFactura(Integer.parseInt(tfFacturaId.getText()));
+        }**/
     }
     
     @Override
@@ -83,11 +86,15 @@ public class MenuFacturaController implements Initializable {
     }    
     
     public void cargarDatos(){
+        /**if(op == 1){
+            
+        }**/
+        
         if(op == 3){
             tblFacturas.getItems().add(buscarFactura());
             op = 0;
         }else{
-        tblFacturas.setItems(listarFacturas());
+            tblFacturas.setItems(listarFacturas());
             colFacturaId.setCellValueFactory(new PropertyValueFactory<Factura, Integer>("facturaId"));
             colFecha.setCellValueFactory(new PropertyValueFactory<Factura, Date>("fecha"));
             colHora.setCellValueFactory(new PropertyValueFactory<Factura, Time>("hora"));

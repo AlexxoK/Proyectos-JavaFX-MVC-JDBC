@@ -561,15 +561,12 @@ end $$
 delimiter ;
 
 delimiter $$
-create procedure sp_editarFactura(In facId int, In fec date, In hor time, In cliId int, In empId int, In tot decimal)
+create procedure sp_editarFactura(In facId int, In cliId int, In empId int)
 begin
     update Facturas
 		set
-			fecha = fec,
-			hora = hor,
 			clienteId = cliId,
-			empleadoId = empId,
-			total = tot
+			empleadoId = empId
 				where facturaId = facId;
 end $$
 delimiter ;

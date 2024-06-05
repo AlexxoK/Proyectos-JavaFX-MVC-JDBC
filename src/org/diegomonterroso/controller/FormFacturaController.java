@@ -22,7 +22,6 @@ import org.diegomonterroso.dto.FacturaDTO;
 import org.diegomonterroso.model.Cliente;
 import org.diegomonterroso.model.Empleado;
 import org.diegomonterroso.model.Factura;
-import org.diegomonterroso.report.GenerarReporte;
 import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
@@ -63,8 +62,6 @@ public class FormFacturaController implements Initializable {
                     stage.menuFacturaView();
                 }
             }
-        }else if(event.getSource() == btnFinalizarFactura){
-            GenerarReporte.getInstance().generarFactura(Integer.parseInt(tfFacturaId.getText()));
         }
     }
 

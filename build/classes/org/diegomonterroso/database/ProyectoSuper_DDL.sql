@@ -16,6 +16,9 @@ create table Clientes(
     primary key PK_clienteId (clienteId)
 );
 
+select * from Clientes
+where Clientes.clienteId = 1;
+
 create table Cargos(
 	cargoId int not null auto_increment,
     nombreCargo varchar(30) not null,
@@ -109,6 +112,11 @@ create table Productos(
 		references CategoriaProductos (categoriaProductoId)
 );
 
+select * from Productos
+join distribuidores on productos.distribuidorId = distribuidores.distribuidorId
+join categoriaProductos on productos.categoriaProductoId = categoriaproductos.categoriaProductoId
+where Productos.productoId = 1;
+
 call sp_agregarProducto('Teclado', 'Teclado de computadora.', 20, 15.00, 10.00, 20.00, 1, 1);
 
 create table Promociones(
@@ -135,6 +143,12 @@ create table DetalleFactura(
 );
 
 call sp_agregarDetalleFactura(2, 2);
+
+select * from DetalleFactura
+join Facturas on DetalleFactura.facturaId = Facturas.facturaId
+join Clientes on Facturas.clienteId = Clientes.clienteId
+join Productos on DetalleFactura.productoId = Productos.productoId
+where Facturas.facturaId = 1;
 
 create table DetalleCompra(
 	detalleCompraId int not null auto_increment,
@@ -166,6 +180,8 @@ create table Usuarios(
 	constraint FK_Usuarios_Empleados foreign key Usuarios(empleadoId)
 		references Empleados(empleadoId)
 );
+
+select * from Usuarios;
 
 insert into Clientes(nombre, apellido, telefono, nit, direccion) values
 	('Luis', 'Cuxun', '1234-1234', '17302703-0', 'Ciudad'),
@@ -211,10 +227,4 @@ insert into NivelesAcceso(nivelAcceso) values
     ('admin'),
     ('usuario');
     
-select * from Usuarios;
-
-select * from DetalleFactura
-join Facturas on DetalleFactura.facturaId = Facturas.facturaId
-join Clientes on Facturas.clienteId = Clientes.clienteId
-join Productos on DetalleFactura.productoId = Productos.productoId
-where Facturas.facturaId = 1;
+-- drop procedure sp_editarFactura

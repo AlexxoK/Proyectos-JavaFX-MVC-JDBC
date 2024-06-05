@@ -16,6 +16,9 @@ create table Clientes(
     primary key PK_clienteId (clienteId)
 );
 
+select * from Clientes
+where Clientes.clienteId = 1;
+
 create table Cargos(
 	cargoId int not null auto_increment,
     nombreCargo varchar(30) not null,
@@ -40,12 +43,16 @@ create table Distribuidores(
     primary key PK_distribuidorId (distribuidorId)
 );
 
+call sp_agregarDistribuidor('NaturaLab', '5456-8745', '123456789', 'Ciudad', 'NaturaLabFB');
+
 create table CategoriaProductos(
 	categoriaProductoId int not null auto_increment,
     nombreCategoria varchar(30) not null,
     descripcionCategoria varchar(100) not null,
     Primary key PK_categoriaProductoId (categoriaProductoId)
 );
+
+select * from categoriaproductos;
 
 create table Empleados(
 	empleadoId int not null auto_increment,
@@ -109,6 +116,11 @@ create table Productos(
 		references CategoriaProductos (categoriaProductoId)
 );
 
+select * from Productos
+join distribuidores on productos.distribuidorId = distribuidores.distribuidorId
+join categoriaProductos on productos.categoriaProductoId = categoriaproductos.categoriaProductoId
+where Productos.productoId = 1;
+
 call sp_agregarProducto('Teclado', 'Teclado de computadora.', 20, 15.00, 10.00, 20.00, 1, 1);
 
 create table Promociones(
@@ -135,6 +147,12 @@ create table DetalleFactura(
 );
 
 call sp_agregarDetalleFactura(2, 2);
+
+select * from DetalleFactura
+join Facturas on DetalleFactura.facturaId = Facturas.facturaId
+join Clientes on Facturas.clienteId = Clientes.clienteId
+join Productos on DetalleFactura.productoId = Productos.productoId
+where Facturas.facturaId = 1;
 
 create table DetalleCompra(
 	detalleCompraId int not null auto_increment,
@@ -167,6 +185,8 @@ create table Usuarios(
 		references Empleados(empleadoId)
 );
 
+select * from Usuarios;
+
 insert into Clientes(nombre, apellido, telefono, nit, direccion) values
 	('Luis', 'Cuxun', '1234-1234', '17302703-0', 'Ciudad'),
     ('Alejandro', 'Carrillo', '4234-4234', '36987412-0', 'Ciudad'),
@@ -193,10 +213,10 @@ insert into Distribuidores(nombreDistribuidor, telefonoDistribuidor, nitDistribu
     ('Jose', '4321-1234', '23548691','Ciudad', 'MercadoLaQuinta');
     
 insert into CategoriaProductos(nombreCategoria, descripcionCategoria) values
-    ('Electronicos', 'Variedad de instrumentos electronicos.');
+    ('Electrónicos', 'Variedad de instrumentos electronicos.');
     
 insert into Productos(nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, distribuidorId, categoriaProductoId) values
-    ('Mouse', 'Mouse para computadora.', 15, 50.00, 100.00, 50.00, 1, 1);
+    ('Mouse', 'Mouse para computadora.', 15, 50.00, 100.00, 50.00, 1, 2);
     
 insert into Promociones(precioPromocion, descripcionPromocion, fechaInicio, fechaFinalizacion, productoId) values
 	(15.00, 'Promocion de primavera.', '2024-01-01', '2024-01-02', 1);
@@ -211,10 +231,5 @@ insert into NivelesAcceso(nivelAcceso) values
     ('admin'),
     ('usuario');
     
-select * from Usuarios;
-
-select * from DetalleFactura
-join Facturas on DetalleFactura.facturaId = Facturas.facturaId
-join Clientes on Facturas.clienteId = Clientes.clienteId
-join Productos on DetalleFactura.productoId = Productos.productoId
-where Facturas.facturaId = 1;
+-- drop procedure sp_editarFactura
+-- truncate table ;
