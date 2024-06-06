@@ -39,6 +39,7 @@
             <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="38.00001831054688" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="38.79998779296875" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="42.4000244140625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="42.4000244140625" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="0.0" prefWidth="80.0" text="Agregar" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
@@ -46,11 +47,11 @@
             <Button fx:id="btnEliminar1" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="0.0" prefWidth="80.0" text="Eliminar" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="80.0" text="Reportes" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <Button fx:id="btnDetalleF" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="0.0" prefWidth="80.0" text="Detalle" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Button fx:id="btnFinalizarFactura" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="20.0" prefWidth="80.0" text="Finalizar Factura" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <TextField fx:id="tfFactura" layoutX="825.0" layoutY="193.0" prefHeight="26.0" prefWidth="234.0" promptText="Ingrese el Id de la factura a buscar" />
+      <TextField fx:id="tfBuscarFacturaId" layoutX="825.0" layoutY="193.0" prefHeight="26.0" prefWidth="234.0" promptText="Ingrese el Id de la factura a buscar" />
       <Button fx:id="btnBuscar1" layoutX="1065.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
-      <Button fx:id="btnFinalizarFactura" layoutX="974.0" layoutY="523.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="87.0" text="Finalizar Factura" textAlignment="CENTER" wrapText="true" />
-      <TextField fx:id="tfFacturaId" editable="false" layoutX="825.0" layoutY="233.0" promptText="FacturaId" />
+      <TextField fx:id="tfFacturaId" layoutX="825.0" layoutY="233.0" promptText="FacturaId" />
    </children>
 </AnchorPane>

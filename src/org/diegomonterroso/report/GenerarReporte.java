@@ -36,7 +36,7 @@ public class GenerarReporte {
             // Paso 3: Crear un stage nuevo
             Stage reportStage = new Stage();
             // Paso 4: Generar el reporte
-            JasperPrint reporte = JasperFillManager.fillReport(GenerarReporte.class.getResourceAsStream("org/diegomonterroso/report/Factura.jasper"), parametros, conexion);
+            JasperPrint reporte = JasperFillManager.fillReport(GenerarReporte.class.getResourceAsStream("/org/diegomonterroso/report/Factura.jasper"), parametros, conexion);
             // Paso 5: Montar el reporte en el stage
             JRViewerFX reportView = new JRViewerFX(reporte);
             // Paso 6: Mostrar el stage
@@ -48,6 +48,52 @@ public class GenerarReporte {
             Scene scene = new Scene(root);
             reportStage.setScene(scene);
             reportStage.setTitle("Factura");
+            reportStage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void generarProducto(int proId){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("proId", proId);
+            
+            Stage reportStage = new Stage();
+            JasperPrint reporte = JasperFillManager.fillReport(GenerarReporte.class.getResourceAsStream("/org/diegomonterroso/report/Producto.jasper"), parametros, conexion);
+            JRViewerFX reportView = new JRViewerFX(reporte);
+            
+            Pane root = new Pane();
+            root.getChildren().add(reportView);
+            reportView.setPrefSize(1000, 800);
+            Scene scene = new Scene(root);
+            reportStage.setScene(scene);
+            reportStage.setTitle("Producto");
+            reportStage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void generarCliente(int cliId){
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("cliId", cliId);
+            
+            Stage reportStage = new Stage();
+            JasperPrint reporte = JasperFillManager.fillReport(GenerarReporte.class.getResourceAsStream("/org/diegomonterroso/report/Cliente.jasper"), parametros, conexion);
+            JRViewerFX reportView = new JRViewerFX(reporte);
+            
+            Pane root = new Pane();
+            root.getChildren().add(reportView);
+            reportView.setPrefSize(1000, 800);
+            Scene scene = new Scene(root);
+            reportStage.setScene(scene);
+            reportStage.setTitle("Cliente");
             reportStage.show();
         }catch(Exception e){
             e.printStackTrace();

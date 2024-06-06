@@ -40,7 +40,7 @@ public class MenuFacturaController implements Initializable {
     TableView tblFacturas;
     
     @FXML
-    TextField tfFactura, tfFacturaId;
+    TextField tfFacturaId, tfBuscarFacturaId;
     
     @FXML
     TableColumn colFacturaId, colFecha, colHora, colCliente, colEmpleado, colTotal;
@@ -66,7 +66,7 @@ public class MenuFacturaController implements Initializable {
             }
         }else if (event.getSource() == btnBuscar){
             tblFacturas.getItems().clear();
-            if(tfFactura.getText().equals("")){
+            if(tfFacturaId.getText().equals("")){
                 cargarDatos();
             
             }else{
@@ -75,9 +75,9 @@ public class MenuFacturaController implements Initializable {
             }
         }else if(event.getSource() == btnDetalleF){
             stage.formDetalleFacturaView(1);
-        }/**else if(event.getSource() == btnFinalizarFactura){
-                GenerarReporte.getInstance().generarFactura(Integer.parseInt(tfFacturaId.getText()));
-        }**/
+        }else if(event.getSource() == btnFinalizarFactura){
+                GenerarReporte.getInstance().generarFactura(((Factura)tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId());
+        }
     }
     
     @Override
@@ -86,10 +86,6 @@ public class MenuFacturaController implements Initializable {
     }    
     
     public void cargarDatos(){
-        /**if(op == 1){
-            
-        }**/
-        
         if(op == 3){
             tblFacturas.getItems().add(buscarFactura());
             op = 0;
@@ -172,7 +168,7 @@ public class MenuFacturaController implements Initializable {
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_buscarFactura(?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt(tfFacturaId.getText()));
+            statement.setInt(1, Integer.parseInt(tfBuscarFacturaId.getText()));
             resultSet = statement.executeQuery();
             
             if(resultSet.next()){

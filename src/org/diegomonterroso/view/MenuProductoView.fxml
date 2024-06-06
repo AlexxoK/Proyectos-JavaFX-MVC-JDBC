@@ -44,6 +44,7 @@
       <TextField fx:id="tfProductoBuscarId" layoutX="725.0" layoutY="704.0" prefHeight="26.0" prefWidth="264.0" promptText="Ingrese el Id del producto a buscar" />
       <Button fx:id="btnBuscar" layoutX="995.0" layoutY="704.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
       <Button fx:id="btnGuardar" layoutX="1080.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />
-      <Button fx:id="btnVaciar" alignment="CENTER" layoutX="1080.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar" wrapText="true" />
+      <Button fx:id="btnVaciar" alignment="CENTER" layoutX="1080.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar" wrapText="true" />
+      <Button fx:id="btnFinalizarProducto" layoutX="1085.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="87.0" text="Finalizar Producto" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

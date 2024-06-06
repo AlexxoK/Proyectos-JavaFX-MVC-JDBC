@@ -24,6 +24,7 @@ import org.diegomonterroso.dao.Conexion;
 import org.diegomonterroso.model.CategoriaProducto;
 import org.diegomonterroso.model.Distribuidor;
 import org.diegomonterroso.model.Producto;
+import org.diegomonterroso.report.GenerarReporte;
 import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
@@ -52,7 +53,7 @@ public class MenuProductoController implements Initializable {
     TableColumn colProductoId, colNombre, colDescripcion, colCantidadStock, colPrecioVentaU, colPrecioVentaM, colPrecioCompra, colDistribuidor, colCategoria;
     
     @FXML
-    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar;
+    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar, btnFinalizarProducto;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -82,6 +83,8 @@ public class MenuProductoController implements Initializable {
                 op = 3;
                 cargarDatos();
             }
+        }else if(event.getSource() == btnFinalizarProducto){
+                GenerarReporte.getInstance().generarProducto(Integer.parseInt(tfProductoId.getText()));
         }
     }
     

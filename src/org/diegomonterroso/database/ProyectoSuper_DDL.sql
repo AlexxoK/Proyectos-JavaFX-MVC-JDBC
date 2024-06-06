@@ -1,4 +1,4 @@
-drop database if exists superDB;
+-- drop database if exists superDB;
 
 create database if not exists superDB;
 
@@ -43,7 +43,7 @@ create table Distribuidores(
     primary key PK_distribuidorId (distribuidorId)
 );
 
-call sp_agregarDistribuidor('NaturaLab', '5456-8745', '123456789', 'Ciudad', 'NaturaLabFB');
+-- call sp_agregarDistribuidor('NaturaLab', '5456-8745', '123456789', 'Ciudad', 'NaturaLabFB');
 
 create table CategoriaProductos(
 	categoriaProductoId int not null auto_increment,
@@ -84,7 +84,7 @@ create table Facturas(
 		references Empleados (empleadoId)
 );
 
-call sp_agregarFactura(1, 1);
+-- call sp_agregarFactura(1, 1);
 
 create table TicketSoporte(
 	ticketSoporteId int not null auto_increment,
@@ -121,7 +121,7 @@ join distribuidores on productos.distribuidorId = distribuidores.distribuidorId
 join categoriaProductos on productos.categoriaProductoId = categoriaproductos.categoriaProductoId
 where Productos.productoId = 1;
 
-call sp_agregarProducto('Teclado', 'Teclado de computadora.', 20, 15.00, 10.00, 20.00, 1, 1);
+-- call sp_agregarProducto('Teclado', 'Teclado de computadora.', 20, 15.00, 10.00, 20.00, 1, 1);
 
 create table Promociones(
 	promocionId int not null auto_increment,
@@ -146,7 +146,7 @@ create table DetalleFactura(
 		references Productos (productoId)
 );
 
-call sp_agregarDetalleFactura(2, 2);
+-- call sp_agregarDetalleFactura(2, 2);
 
 select * from DetalleFactura
 join Facturas on DetalleFactura.facturaId = Facturas.facturaId
@@ -216,7 +216,7 @@ insert into CategoriaProductos(nombreCategoria, descripcionCategoria) values
     ('Electrónicos', 'Variedad de instrumentos electronicos.');
     
 insert into Productos(nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, distribuidorId, categoriaProductoId) values
-    ('Mouse', 'Mouse para computadora.', 15, 50.00, 100.00, 50.00, 1, 2);
+    ('Mouse', 'Mouse para computadora.', 15, 50.00, 100.00, 50.00, 1, 1);
     
 insert into Promociones(precioPromocion, descripcionPromocion, fechaInicio, fechaFinalizacion, productoId) values
 	(15.00, 'Promocion de primavera.', '2024-01-01', '2024-01-02', 1);
@@ -232,4 +232,4 @@ insert into NivelesAcceso(nivelAcceso) values
     ('usuario');
     
 -- drop procedure sp_editarFactura
--- truncate table ;
+-- truncate table Usuarios;
