@@ -48,5 +48,6 @@
       <Button fx:id="btnRegresar" layoutX="24.0" layoutY="711.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Regresar" />
       <TextField fx:id="tfClienteId" layoutX="701.0" layoutY="148.0" prefHeight="25.0" prefWidth="190.0" promptText="Ingrese el Id del cliente a buscar" />
       <Button fx:id="btnBuscar" layoutX="898.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
+      <Button fx:id="btnVerCliente" layoutX="1045.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="20.0" prefWidth="80.0" text="Ver Cliente" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

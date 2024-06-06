@@ -21,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.diegomonterroso.dao.Conexion;
 import org.diegomonterroso.dto.ClienteDTO;
 import org.diegomonterroso.model.Cliente;
+import org.diegomonterroso.report.GenerarReporte;
 import org.diegomonterroso.system.Main;
 import org.diegomonterroso.utils.SuperKinalAlert;
 
@@ -40,7 +41,7 @@ public class MenuClienteController implements Initializable {
     TableColumn colClienteId, colNombre, colApellido, colTelefono, colNit, colDireccion;
     
     @FXML
-    Button btnRegresar, btnAgregar, btnEditar, btnEliminar, btnBuscar;
+    Button btnRegresar, btnAgregar, btnEditar, btnEliminar, btnBuscar, btnVerCliente;
     
     @FXML
     TextField tfClienteId;
@@ -67,6 +68,8 @@ public class MenuClienteController implements Initializable {
                 op = 3;
                 cargarDatos();
             }
+        }else if(event.getSource() == btnVerCliente){
+                GenerarReporte.getInstance().generarCliente(((Cliente)tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
         }
     }
     

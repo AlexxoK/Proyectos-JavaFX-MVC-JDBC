@@ -53,7 +53,7 @@ public class MenuProductoController implements Initializable {
     TableColumn colProductoId, colNombre, colDescripcion, colCantidadStock, colPrecioVentaU, colPrecioVentaM, colPrecioCompra, colDistribuidor, colCategoria;
     
     @FXML
-    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar, btnFinalizarProducto;
+    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar, btnVerProducto;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -83,8 +83,8 @@ public class MenuProductoController implements Initializable {
                 op = 3;
                 cargarDatos();
             }
-        }else if(event.getSource() == btnFinalizarProducto){
-                GenerarReporte.getInstance().generarProducto(Integer.parseInt(tfProductoId.getText()));
+        }else if(event.getSource() == btnVerProducto){
+                GenerarReporte.getInstance().generarFactura(((Producto)tblProductos.getSelectionModel().getSelectedItem()).getProductoId());
         }
     }
     

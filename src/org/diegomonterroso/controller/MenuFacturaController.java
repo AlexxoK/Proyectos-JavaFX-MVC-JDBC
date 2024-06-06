@@ -40,13 +40,13 @@ public class MenuFacturaController implements Initializable {
     TableView tblFacturas;
     
     @FXML
-    TextField tfFacturaId, tfBuscarFacturaId;
+    TextField tfFacturaId;
     
     @FXML
     TableColumn colFacturaId, colFecha, colHora, colCliente, colEmpleado, colTotal;
     
     @FXML
-    Button btnAgregar, btnEditar, btnEliminar, btnDetalleF, btnBuscar, btnRegresar, btnFinalizarFactura;
+    Button btnAgregar, btnEditar, btnEliminar, btnDetalleF, btnBuscar, btnRegresar, btnVerFactura;
     
     @FXML
     public void handleButtonAction(ActionEvent event) {
@@ -75,7 +75,7 @@ public class MenuFacturaController implements Initializable {
             }
         }else if(event.getSource() == btnDetalleF){
             stage.formDetalleFacturaView(1);
-        }else if(event.getSource() == btnFinalizarFactura){
+        }else if(event.getSource() == btnVerFactura){
                 GenerarReporte.getInstance().generarFactura(((Factura)tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId());
         }
     }
@@ -168,7 +168,7 @@ public class MenuFacturaController implements Initializable {
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_buscarFactura(?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt(tfBuscarFacturaId.getText()));
+            statement.setInt(1, Integer.parseInt(tfFacturaId.getText()));
             resultSet = statement.executeQuery();
             
             if(resultSet.next()){
